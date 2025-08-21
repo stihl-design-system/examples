@@ -1,4 +1,3 @@
-import '@stihl-design-system/components/styles/fonts';
 import { Outlet, createRootRoute } from '@tanstack/react-router';
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import { TanstackDevtools } from '@tanstack/react-devtools';
