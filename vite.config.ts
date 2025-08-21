@@ -7,9 +7,15 @@ import {
 
 import { createHtmlPlugin } from 'vite-plugin-html';
 import tanstackRouter from '@tanstack/router-plugin/vite';
+import { resolve } from 'node:path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  css: {
+    modules: {
+      localsConvention: 'camelCase',
+    },
+  },
   plugins: [
     tanstackRouter({ autoCodeSplitting: true }),
     viteReact(),
@@ -23,4 +29,9 @@ export default defineConfig({
       },
     }),
   ],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
+    },
+  },
 });

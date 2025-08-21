@@ -14,15 +14,13 @@
     "check": "prettier --write . && eslint --fix"
   },
   "dependencies": {
-    "@tanstack/react-devtools": "^0.2.2",
     "@tanstack/react-router": "^1.130.2",
-    "@tanstack/react-router-devtools": "^1.131.5",
     "@tanstack/router-plugin": "^1.121.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@stihl-design-system/components": "latest",
+    "@stihl-design-system/components": "file:./local_modules/@stihl-design-system/components",
     "@tanstack/eslint-config": "^0.3.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.2.0",
@@ -30,6 +28,7 @@
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
+    "classnames": "^2.5.1",
     "jsdom": "^26.0.0",
     "prettier": "^3.5.3",
     "sass": "^1.90.0",

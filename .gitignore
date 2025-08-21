@@ -1,3 +1,4 @@
+local_modules
 node_modules
 .DS_Store
 dist
@@ -7,3 +8,18 @@ count.txt
 .env
 .nitro
 .tanstack
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# vite
+vite.config.ts.timestamp-*
+

@@ -10,33 +10,44 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PatternsHeaderPrimaryAreaHeaderPatternPrimaryAreaRouteImport } from './routes/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PatternsHeaderPrimaryAreaHeaderPatternPrimaryAreaRoute =
+  PatternsHeaderPrimaryAreaHeaderPatternPrimaryAreaRouteImport.update({
+    id: '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea',
+    path: '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea': typeof PatternsHeaderPrimaryAreaHeaderPatternPrimaryAreaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea': typeof PatternsHeaderPrimaryAreaHeaderPatternPrimaryAreaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea': typeof PatternsHeaderPrimaryAreaHeaderPatternPrimaryAreaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea'
+  id: '__root__' | '/' | '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PatternsHeaderPrimaryAreaHeaderPatternPrimaryAreaRoute: typeof PatternsHeaderPrimaryAreaHeaderPatternPrimaryAreaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +59,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea': {
+      id: '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea'
+      path: '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea'
+      fullPath: '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea'
+      preLoaderRoute: typeof PatternsHeaderPrimaryAreaHeaderPatternPrimaryAreaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PatternsHeaderPrimaryAreaHeaderPatternPrimaryAreaRoute:
+    PatternsHeaderPrimaryAreaHeaderPatternPrimaryAreaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
