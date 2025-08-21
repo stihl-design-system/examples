@@ -5,13 +5,13 @@ import {
   getResetStyles,
 } from '@stihl-design-system/components/partials';
 
-import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
+import tanstackRouter from '@tanstack/router-plugin/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    TanStackRouterVite({ autoCodeSplitting: true }),
+    tanstackRouter({ autoCodeSplitting: true }),
     viteReact(),
     createHtmlPlugin({
       inject: {
