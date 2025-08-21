@@ -43,7 +43,7 @@ export const AppSwitch = ({
           <li>
             <DSActionLink
               href='#'
-              iconSource='icon.svg'
+              iconSource='/icon.svg'
               iconSize='x-large'
               iconPosition='left'
               stretched={true}
@@ -54,7 +54,7 @@ export const AppSwitch = ({
           <li>
             <DSActionLink
               href='#'
-              iconSource='mystihl-icon.svg'
+              iconSource='/mystihl-icon.svg'
               iconSize='x-large'
               iconPosition='left'
               stretched={true}
@@ -65,7 +65,7 @@ export const AppSwitch = ({
           <li>
             <DSActionLink
               href='#'
-              iconSource='connected-icon.svg'
+              iconSource='/connected-icon.svg'
               iconSize='x-large'
               iconPosition='left'
               stretched={true}
@@ -76,7 +76,7 @@ export const AppSwitch = ({
           <li>
             <DSActionLink
               href='#'
-              iconSource='imow-icon.svg'
+              iconSource='/imow-icon.svg'
               iconSize='x-large'
               iconPosition='left'
               stretched={true}
@@ -87,7 +87,7 @@ export const AppSwitch = ({
           <li>
             <DSActionLink
               href='#'
-              iconSource='icon.svg'
+              iconSource='/icon.svg'
               iconSize='x-large'
               iconPosition='left'
               stretched={true}
