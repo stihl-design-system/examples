@@ -10,10 +10,10 @@ import {
   DSTopBar,
 } from '@stihl-design-system/components';
 
-import { Account } from '@/components/UtilityNavigation/Account/Account';
-import { AppSwitch } from '@/components/UtilityNavigation/AppSwitch/AppSwitch';
-import { LanguageSelect } from '@/components/UtilityNavigation/LanguageSelect/LanguageSelect';
-import { MobileMenu } from '@/components/UtilityNavigation/MobileMenu/MobileMenu';
+import { Account } from '@/components/Header/UtilityNavigation/Account/Account';
+import { AppSwitch } from '@/components/Header/UtilityNavigation/AppSwitch/AppSwitch';
+import { LanguageSelect } from '@/components/Header/UtilityNavigation/LanguageSelect/LanguageSelect';
+import { MobileMenu } from '@/components/Header/UtilityNavigation/MobileMenu/MobileMenu';
 
 import styles from './HeaderPatternPrimaryArea.module.scss';
 
