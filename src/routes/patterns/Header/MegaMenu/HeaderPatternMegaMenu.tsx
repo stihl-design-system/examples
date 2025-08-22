@@ -7,6 +7,7 @@ import {
   DSSkipToContent,
   DSTopBar,
 } from '@stihl-design-system/components';
+import { createFileRoute } from '@tanstack/react-router';
 import classNames from 'classnames';
 import { useState, type JSX } from 'react';
 import styles from './HeaderPatternMegaMenu.module.scss';
@@ -64,6 +65,8 @@ export const HeaderExampleMegaMenu = (): JSX.Element => {
 };
 
 // Added: Route export for patterns navigation
-export const Route = createFileRoute('/patterns/Header/MegaMenu')({
+export const Route = createFileRoute(
+  '/patterns/Header/MegaMenu/HeaderPatternMegaMenu'
+)({
   component: HeaderExampleMegaMenu,
 });

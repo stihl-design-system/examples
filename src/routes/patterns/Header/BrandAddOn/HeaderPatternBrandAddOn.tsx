@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
 import classNames from 'classnames';
 import { useState, type JSX } from 'react';
 
@@ -119,6 +120,8 @@ export const HeaderExampleBrandCustom = (): JSX.Element => {
 };
 
 // Added: Route export for patterns navigation
-export const Route = createFileRoute('/patterns/Header/BrandAddOn')({
+export const Route = createFileRoute(
+  '/patterns/Header/BrandAddOn/HeaderPatternBrandAddOn'
+)({
   component: HeaderExampleBrandCustom,
 });

@@ -9,6 +9,7 @@ import {
   DSSkipToContent,
   DSTopBar,
 } from '@stihl-design-system/components';
+import { createFileRoute } from '@tanstack/react-router';
 import classNames from 'classnames';
 import { useState, type JSX } from 'react';
 
@@ -141,6 +142,8 @@ export const HeaderExampleComplete = (): JSX.Element => {
 };
 
 // Added: Route export for patterns navigation
-export const Route = createFileRoute('/patterns/Header/Complete')({
+export const Route = createFileRoute(
+  '/patterns/Header/Complete/HeaderPatternComplete'
+)({
   component: HeaderExampleComplete,
 });

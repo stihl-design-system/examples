@@ -5,6 +5,7 @@ import {
   DSSkipToContent,
   DSTopBar,
 } from '@stihl-design-system/components';
+import { createFileRoute } from '@tanstack/react-router';
 import classNames from 'classnames';
 import { useState, type JSX } from 'react';
 
@@ -105,6 +106,8 @@ export const HeaderExamplePrimaryOnly = (): JSX.Element => {
 };
 
 // Added: Route export for patterns navigation
-export const Route = createFileRoute('/patterns/Header/PrimaryArea')({
+export const Route = createFileRoute(
+  '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea'
+)({
   component: HeaderExamplePrimaryOnly,
 });
