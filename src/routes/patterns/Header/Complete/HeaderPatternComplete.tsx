@@ -26,7 +26,7 @@ export default interface BannerProps
   children?: React.ReactNode;
 }
 
-export const HeaderExampleComplete = (): JSX.Element => {
+export const HeaderPatternComplete = (): JSX.Element => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   return (
     <>
@@ -145,5 +145,5 @@ export const HeaderExampleComplete = (): JSX.Element => {
 export const Route = createFileRoute(
   '/patterns/Header/Complete/HeaderPatternComplete'
 )({
-  component: HeaderExampleComplete,
+  component: HeaderPatternComplete,
 });

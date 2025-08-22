@@ -22,7 +22,7 @@ export default interface BannerProps
   children?: React.ReactNode;
 }
 
-export const HeaderExampleBrandCustom = (): JSX.Element => {
+export const HeaderPatternBrandAddOn = (): JSX.Element => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   return (
     <>
@@ -123,5 +123,5 @@ export const HeaderExampleBrandCustom = (): JSX.Element => {
 export const Route = createFileRoute(
   '/patterns/Header/BrandAddOn/HeaderPatternBrandAddOn'
 )({
-  component: HeaderExampleBrandCustom,
+  component: HeaderPatternBrandAddOn,
 });

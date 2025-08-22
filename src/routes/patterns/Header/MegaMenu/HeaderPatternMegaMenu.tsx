@@ -17,7 +17,7 @@ export default interface BannerProps
   children?: React.ReactNode;
 }
 
-export const HeaderExampleMegaMenu = (): JSX.Element => {
+export const HeaderPatternMegaMenu = (): JSX.Element => {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   return (
     <>
@@ -68,5 +68,5 @@ export const HeaderExampleMegaMenu = (): JSX.Element => {
 export const Route = createFileRoute(
   '/patterns/Header/MegaMenu/HeaderPatternMegaMenu'
 )({
-  component: HeaderExampleMegaMenu,
+  component: HeaderPatternMegaMenu,
 });

@@ -20,7 +20,7 @@ export interface MainNavigationProps
 /**
  * The `<MainNavigation />`.
  *
- * Design in Figma: [Input File](https://www.figma.com/design/qXldpLO6gxHJNLdcXIPxYt/branch/Y4CQTYvfMrZJQZEGPoVzmI/Core-Components-%F0%9F%92%A0?node-id=30759-4276&t=sOn3fBBbdQPXTKmc-11)
+ * Design in Figma: [Input File](https://www.figma.com/design/Ie2r0R9QwjEc7O3nrFbXhV/Web-Pattern-Library?node-id=6263-49213&t=za2PWr4WKOR5eYIE-11)
  */
 export const MainNavigation = ({
   className,

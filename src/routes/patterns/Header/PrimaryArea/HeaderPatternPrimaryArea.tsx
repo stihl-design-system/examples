@@ -21,7 +21,7 @@ export default interface BannerProps
   children?: React.ReactNode;
 }
 
-export const HeaderExamplePrimaryOnly = (): JSX.Element => {
+export const HeaderPatternPrimaryArea = (): JSX.Element => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   return (
     <>
@@ -109,5 +109,5 @@ export const HeaderExamplePrimaryOnly = (): JSX.Element => {
 export const Route = createFileRoute(
   '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea'
 )({
-  component: HeaderExamplePrimaryOnly,
+  component: HeaderPatternPrimaryArea,
 });
