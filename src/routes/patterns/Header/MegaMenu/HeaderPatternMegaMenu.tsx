@@ -20,6 +20,7 @@ export const HeaderExampleMegaMenu = (): JSX.Element => {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   return (
     <>
+      {/* Provide a “Skip to Content” link before navigation to improve accessibility. */}
       <DSSkipToContent />
       <DSHeader variant='full'>
         <DSTopBar>

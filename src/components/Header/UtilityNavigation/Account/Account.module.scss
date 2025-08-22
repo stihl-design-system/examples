@@ -2,12 +2,14 @@
 
 // Styles for the language selection list
 .list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
   gap: ds.$spacing-4;
+
+  // reset native ul styles
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 // Styles for the group headings in the language list.

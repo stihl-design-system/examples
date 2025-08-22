@@ -10,6 +10,7 @@
 .utility-navigation-brand-add-on {
   width: 100%;
 
+  // From breakpoint 'm' and up, the primary area will be aligned to the right.
   @include ds.media-query-min('m') {
     // Custom styling for the Utility Navigation to align it to the right
     margin-inline-start: auto;
@@ -22,6 +23,8 @@
   display: flex;
   align-items: center;
   gap: ds.$spacing-8;
+
+  // reset native ul styles
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -39,7 +42,7 @@
 }
 
 .vertical-divider-container {
-  // Align everything after the vertical divider to the right on mobile
+  // Align everything after the vertical divider to the right on viewports < M (768px)
   margin-inline-start: auto;
 
   @include ds.media-query-min('m') {
@@ -47,13 +50,15 @@
   }
 }
 
-// Utility styles
+// hides elements on viewports >= L (1024px)
 .only-mobile {
   display: block;
   @include ds.media-query-min('l') {
     display: none;
   }
 }
+
+// shows elements on viewports >= L (1024px)
 .only-desktop {
   display: none;
   @include ds.media-query-min('l') {

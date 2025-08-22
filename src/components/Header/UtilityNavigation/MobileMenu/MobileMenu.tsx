@@ -14,6 +14,7 @@ export const MobileMenu = ({
   showMobileMenu,
   setShowMobileMenu,
 }: MobileMenuProps) => {
+  /* Use DSDrawer for Mobile Menu. Since it's placed in the Top Layer it can be used at any position. */
   return (
     <DSDrawer
       isOpen={showMobileMenu}
@@ -21,6 +22,11 @@ export const MobileMenu = ({
       position='end'
       className={styles.menu}
     >
+      {/**
+       * Example of a Mobile Menu where the
+       * DSActionButton & DSActionLink from the DSTopBar
+       * elements are moved into, on viewports < L (1024px).
+       */}
       <div className={styles.content}>
         <nav aria-label='Utility'>
           <ul className={styles.list}>
@@ -63,6 +69,7 @@ export const MobileMenu = ({
                 My account
               </DSActionButton>
             </li>
+            {/* ... other navigation elements move here from the DSTopBar Utility Navigation */}
           </ul>
         </nav>
       </div>

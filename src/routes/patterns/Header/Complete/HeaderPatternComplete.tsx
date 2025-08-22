@@ -29,6 +29,7 @@ export const HeaderExampleComplete = (): JSX.Element => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   return (
     <>
+      {/* Provide a “Skip to Content” link before navigation to improve accessibility. */}
       <DSSkipToContent />
       <DSHeader
         logoProps={{
@@ -90,6 +91,8 @@ export const HeaderExampleComplete = (): JSX.Element => {
                     Cart
                   </DSActionLink>
                 </li>
+
+                {/* The LanguageSelect button in the DSTopBar should only be visible on viewports >= L (1024px). */}
                 <li className={styles.onlyDesktop}>
                   <LanguageSelect />
                 </li>
@@ -97,13 +100,15 @@ export const HeaderExampleComplete = (): JSX.Element => {
                 {/* Vertical divider, with aria-hidden="true" */}
                 <li aria-hidden='true' className={styles.verticalDivider} />
 
+                {/* The AppSwitch button in the DSTopBar should only be visible on viewports >= L (1024px). */}
                 <li className={styles.onlyDesktop}>
                   <AppSwitch />
                 </li>
+                {/* The Account button in the DSTopBar should only be visible on viewports >= L (1024px). */}
                 <li className={styles.onlyDesktop}>
                   <Account />
                 </li>
-
+                {/* The burger menu button should only be visible on viewports < L (1024px). */}
                 <li
                   className={classNames(
                     styles.mobileMenuButton,
