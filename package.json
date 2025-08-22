@@ -4,11 +4,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 3000",
-    "start": "vite --port 3000",
+    "start": "vite preview --port 3000",
     "prebuild": "node node_modules/@stihl-design-system/components/partials/copyAssets.js",
     "build": "vite build && tsc",
-    "serve": "vite preview",
-    "test": "vitest run",
+    "test:unit": "vitest run",
+    "test:vrt": "npx playwright test --config=playwright.config.vrt.ts",
     "lint": "eslint -c eslint.config.js",
     "format": "prettier",
     "check": "prettier --write . && eslint --fix"
@@ -20,21 +20,22 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@stihl-design-system/components": "file:./local_modules/@stihl-design-system/components",
+    "@eslint/js": "^9.14.0",
     "@playwright/test": "^1.51.1",
+    "@stihl-design-system/components": "file:./local_modules/@stihl-design-system/components",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.2.0",
     "@types/node": "^24.3.0",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
-    "@eslint/js": "^9.14.0",
     "@typescript-eslint/eslint-plugin": "^8.12.2",
     "@typescript-eslint/parser": "^8.12.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "classnames": "^2.5.1",
+    "concurrently": "^9.1.2",
     "eslint": "^9.14.0",
     "eslint-plugin-react": "^7.37.2",
     "globals": "^15.12.0",
-    "@vitejs/plugin-react": "^4.3.4",
-    "classnames": "^2.5.1",
     "jsdom": "^26.0.0",
     "prettier": "^3.5.3",
     "sass": "^1.90.0",
@@ -42,6 +43,7 @@
     "vite": "^6.3.5",
     "vite-plugin-html": "^3.2.2",
     "vitest": "^3.0.5",
+    "wait-on": "^8.0.4",
     "web-vitals": "^4.2.4"
   }
 }

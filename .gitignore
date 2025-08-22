@@ -24,3 +24,9 @@ count.txt
 vite.config.ts.timestamp-*
 
 src/routeTree.gen.ts
+
+
+# testing
+/playwright/vrt-results/
+/playwright-report/
+/playwright/.cache/
