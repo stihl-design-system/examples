@@ -1,13 +1,14 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { MegaMenuContentExample } from '@/components/Header/MainNavigation/MainNavigation';
+import {
+  DSButton,
+  DSHeader,
+  DSMegaMenu,
+  DSScroller,
+  DSSkipToContent,
+  DSTopBar,
+} from '@stihl-design-system/components';
 import classNames from 'classnames';
 import { useState, type JSX } from 'react';
-import { DSButton } from '@stihl-design-system/components';
-import { DSHeader } from '@stihl-design-system/components';
-import { DSMegaMenu } from '@stihl-design-system/components';
-import { DSScroller } from '@stihl-design-system/components';
-import { DSSkipToContent } from '@stihl-design-system/components';
-import { DSTopBar } from '@stihl-design-system/components';
-import { MegaMenuContentExample } from '@/components/Header/MainNavigation/MainNavigation';
 import styles from './HeaderPatternMegaMenu.module.scss';
 
 export default interface BannerProps
@@ -61,10 +62,7 @@ export const HeaderExampleMegaMenu = (): JSX.Element => {
   );
 };
 
-
 // Added: Route export for patterns navigation
-export const Route = createFileRoute(
-  '/patterns/Header/MegaMenu/HeaderPatternMegaMenu'
-)({
+export const Route = createFileRoute('/patterns/Header/MegaMenu')({
   component: HeaderExampleMegaMenu,
 });

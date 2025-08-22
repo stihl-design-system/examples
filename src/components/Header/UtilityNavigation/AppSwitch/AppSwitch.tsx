@@ -1,9 +1,11 @@
+import {
+  DSActionButton,
+  DSActionLink,
+  DSHeading,
+  DSLinkButton,
+  DSPopover,
+} from '@stihl-design-system/components';
 import { useState } from 'react';
-import { DSActionButton } from '@stihl-design-system/components';
-import { DSActionLink } from '@stihl-design-system/components';
-import { DSHeading } from '@stihl-design-system/components';
-import { DSLinkButton } from '@stihl-design-system/components';
-import { DSPopover } from '@stihl-design-system/components';
 import styles from './AppSwitch.module.scss';
 
 export const AppSwitch = ({

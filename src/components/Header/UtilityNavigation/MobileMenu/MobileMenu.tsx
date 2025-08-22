@@ -1,6 +1,8 @@
-import { DSActionButton } from '@stihl-design-system/components';
-import { DSActionLink } from '@stihl-design-system/components';
-import { DSDrawer } from '@stihl-design-system/components';
+import {
+  DSActionButton,
+  DSActionLink,
+  DSDrawer,
+} from '@stihl-design-system/components';
 import styles from './MobileMenu.module.scss';
 
 interface MobileMenuProps {

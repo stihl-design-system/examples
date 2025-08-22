@@ -1,12 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router'
 import classNames from 'classnames';
 import { useState, type JSX } from 'react';
 
-import { DSActionButton } from '@stihl-design-system/components';
-import { DSActionLink } from '@stihl-design-system/components';
-import { DSHeader } from '@stihl-design-system/components';
-import { DSSkipToContent } from '@stihl-design-system/components';
-import { DSTopBar } from '@stihl-design-system/components';
+import {
+  DSActionButton,
+  DSActionLink,
+  DSHeader,
+  DSSkipToContent,
+  DSTopBar,
+} from '@stihl-design-system/components';
 
 import { Account } from '@/components/Header/UtilityNavigation/Account/Account';
 import { AppSwitch } from '@/components/Header/UtilityNavigation/AppSwitch/AppSwitch';
@@ -36,7 +37,7 @@ export const HeaderExampleBrandCustom = (): JSX.Element => {
           variant: 'double',
         }}
       >
-        <DSTopBar >
+        <DSTopBar>
           <DSTopBar.BrandArea />
 
           <DSTopBar.PrimaryArea>
@@ -111,10 +112,7 @@ export const HeaderExampleBrandCustom = (): JSX.Element => {
   );
 };
 
-
 // Added: Route export for patterns navigation
-export const Route = createFileRoute(
-  '/patterns/Header/BrandAddOn/HeaderPatternBrandAddOn'
-)({
+export const Route = createFileRoute('/patterns/Header/BrandAddOn')({
   component: HeaderExampleBrandCustom,
 });

@@ -1,8 +1,10 @@
+import {
+  DSActionButton,
+  DSActionLink,
+  DSInputSearch,
+  DSPopover,
+} from '@stihl-design-system/components';
 import { useState } from 'react';
-import { DSActionButton } from '@stihl-design-system/components';
-import { DSActionLink } from '@stihl-design-system/components';
-import { DSInputSearch } from '@stihl-design-system/components';
-import { DSPopover } from '@stihl-design-system/components';
 import styles from './LanguageSelect.module.scss';
 
 export const LanguageSelect = ({

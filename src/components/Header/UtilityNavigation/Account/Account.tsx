@@ -1,8 +1,10 @@
-import { DSActionButton } from '@stihl-design-system/components';
-import { DSActionLink } from '@stihl-design-system/components';
-import { DSHeading } from '@stihl-design-system/components';
-import { DSLink } from '@stihl-design-system/components';
-import { DSPopover } from '@stihl-design-system/components';
+import {
+  DSActionButton,
+  DSActionLink,
+  DSHeading,
+  DSLink,
+  DSPopover,
+} from '@stihl-design-system/components';
 import styles from './Account.module.scss';
 
 export const Account = () => {

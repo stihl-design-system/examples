@@ -1,15 +1,16 @@
-import { createFileRoute } from '@tanstack/react-router'
+import {
+  DSActionButton,
+  DSActionLink,
+  DSBanner,
+  DSHeader,
+  DSIcon,
+  DSInputSearch,
+  DSLink,
+  DSSkipToContent,
+  DSTopBar,
+} from '@stihl-design-system/components';
 import classNames from 'classnames';
 import { useState, type JSX } from 'react';
-import { DSActionButton } from '@stihl-design-system/components';
-import { DSActionLink } from '@stihl-design-system/components';
-import { DSBanner } from '@stihl-design-system/components';
-import { DSHeader } from '@stihl-design-system/components';
-import { DSIcon } from '@stihl-design-system/components';
-import { DSInputSearch } from '@stihl-design-system/components';
-import { DSLink } from '@stihl-design-system/components';
-import { DSSkipToContent } from '@stihl-design-system/components';
-import { DSTopBar } from '@stihl-design-system/components';
 
 import { MainNavigation } from '@/components/Header/MainNavigation/MainNavigation';
 import { Account } from '@/components/Header/UtilityNavigation/Account/Account';
@@ -52,7 +53,7 @@ export const HeaderExampleComplete = (): JSX.Element => {
           </DSBanner>
         </DSHeader.BannerArea>
 
-        <DSTopBar >
+        <DSTopBar>
           <DSTopBar.BrandArea></DSTopBar.BrandArea>
           <DSTopBar.PrimaryArea>
             <form role='search' className={styles.inputSearchForm}>
@@ -126,7 +127,7 @@ export const HeaderExampleComplete = (): JSX.Element => {
             />
           </DSTopBar.SecondaryArea>
         </DSTopBar>
-        <DSHeader.MainNavigationArea >
+        <DSHeader.MainNavigationArea>
           <MainNavigation />
         </DSHeader.MainNavigationArea>
       </DSHeader>
@@ -134,10 +135,7 @@ export const HeaderExampleComplete = (): JSX.Element => {
   );
 };
 
-
 // Added: Route export for patterns navigation
-export const Route = createFileRoute(
-  '/patterns/Header/Complete/HeaderPatternComplete'
-)({
+export const Route = createFileRoute('/patterns/Header/Complete')({
   component: HeaderExampleComplete,
 });
