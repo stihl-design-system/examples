@@ -1,0 +1,19 @@
+@use '@stihl-design-system/components/styles/scss/ds';
+
+.main-navigation {
+  padding-block: ds.$spacing-8;
+}
+
+// animate the chevron rotation when Mega Menu opens
+.chevron {
+  svg {
+    transform: rotate(0);
+    @include ds.transition(('transform'), '250', 'ease-in');
+  }
+  &--open {
+    svg {
+      transform: rotate(-180deg);
+      @include ds.transition(('transform'), '250', 'ease-out');
+    }
+  }
+}

@@ -3,23 +3,28 @@ import classNames from 'classnames';
 import { useState, type JSX } from 'react';
 import { DSActionButton } from '@stihl-design-system/components';
 import { DSActionLink } from '@stihl-design-system/components';
+import { DSBanner } from '@stihl-design-system/components';
 import { DSHeader } from '@stihl-design-system/components';
+import { DSIcon } from '@stihl-design-system/components';
+import { DSInputSearch } from '@stihl-design-system/components';
+import { DSLink } from '@stihl-design-system/components';
 import { DSSkipToContent } from '@stihl-design-system/components';
 import { DSTopBar } from '@stihl-design-system/components';
 
+import { MainNavigation } from '@/components/Header/MainNavigation/MainNavigation';
 import { Account } from '@/components/Header/UtilityNavigation/Account/Account';
 import { AppSwitch } from '@/components/Header/UtilityNavigation/AppSwitch/AppSwitch';
 import { LanguageSelect } from '@/components/Header/UtilityNavigation/LanguageSelect/LanguageSelect';
-import { MobileMenu } from '@/components/Header/UtilityNavigation/MobileMenu/MobileMenu';
 
-import styles from './HeaderPatternPrimaryArea.module.scss';
+import { MobileMenu } from './-MobileMenu';
+import styles from './HeaderPatternComplete.module.scss';
 
 export default interface BannerProps
   extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
-export const HeaderExamplePrimaryOnly = (): JSX.Element => {
+export const HeaderExampleComplete = (): JSX.Element => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   return (
     <>
@@ -29,12 +34,40 @@ export const HeaderExamplePrimaryOnly = (): JSX.Element => {
           aria: { 'aria-label': 'STIHL Deutschland Website' },
           href: '/',
         }}
+        brandAddOnProps={{ children: 'Brand AddOn' }}
       >
-        <DSTopBar >
-          <DSTopBar.BrandArea />
+        <DSHeader.BannerArea>
+          <DSBanner>
+            <div className={styles.bannerContent}>
+              <DSIcon aria-hidden='true' name='placeholder' theme='dark' />
+              <DSLink
+                iconName='chevron-right'
+                href='#'
+                theme='dark'
+                iconPosition='right'
+              >
+                Promo Banner Link
+              </DSLink>
+            </div>
+          </DSBanner>
+        </DSHeader.BannerArea>
 
+        <DSTopBar >
+          <DSTopBar.BrandArea></DSTopBar.BrandArea>
           <DSTopBar.PrimaryArea>
-            <nav aria-label={'Utility'} className={styles.utilityNavigation}>
+            <form role='search' className={styles.inputSearchForm}>
+              <DSInputSearch
+                name='product-search'
+                id='product-search'
+                label='Product search'
+                placeholder='Product search'
+                hideLabel={true}
+                className={styles.inputSearchRounded}
+              />
+            </form>
+          </DSTopBar.PrimaryArea>
+          <DSTopBar.SecondaryArea>
+            <nav aria-label={'Utility'}>
               <ul className={styles.list}>
                 <li className={styles.onlyDesktop}>
                   <DSActionLink
@@ -91,8 +124,11 @@ export const HeaderExamplePrimaryOnly = (): JSX.Element => {
               showMobileMenu={showMobileMenu}
               setShowMobileMenu={setShowMobileMenu}
             />
-          </DSTopBar.PrimaryArea>
+          </DSTopBar.SecondaryArea>
         </DSTopBar>
+        <DSHeader.MainNavigationArea >
+          <MainNavigation />
+        </DSHeader.MainNavigationArea>
       </DSHeader>
     </>
   );
@@ -101,7 +137,7 @@ export const HeaderExamplePrimaryOnly = (): JSX.Element => {
 
 // Added: Route export for patterns navigation
 export const Route = createFileRoute(
-  '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea'
+  '/patterns/Header/Complete/HeaderPatternComplete'
 )({
-  component: HeaderExamplePrimaryOnly,
+  component: HeaderExampleComplete,
 });

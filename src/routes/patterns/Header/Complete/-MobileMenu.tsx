@@ -1,7 +1,9 @@
 import { DSActionButton } from '@stihl-design-system/components';
 import { DSActionLink } from '@stihl-design-system/components';
+import { DSButton } from '@stihl-design-system/components';
 import { DSDrawer } from '@stihl-design-system/components';
-import styles from './MobileMenu.module.scss';
+import { DSLinkButton } from '@stihl-design-system/components';
+import styles from './-MobileMenu.module.scss';
 
 interface MobileMenuProps {
   showMobileMenu: boolean;
@@ -20,8 +22,43 @@ export const MobileMenu = ({
       className={styles.menu}
     >
       <div className={styles.content}>
+        <nav aria-label='Main'>
+          <ul className={styles.list}>
+            <li>
+              <DSButton
+                variant='navigation'
+                iconName='chevron-right'
+                iconPosition='right'
+              >
+                Products
+              </DSButton>
+            </li>
+            <li>
+              <DSButton
+                variant='navigation'
+                iconName='chevron-right'
+                iconPosition='right'
+              >
+                Accessories
+              </DSButton>
+            </li>
+            <li>
+              <DSLinkButton
+                variant='navigation'
+                href='#'
+                iconName='arrow-out'
+                iconPosition='right'
+                target='_blank'
+              >
+                Professionals
+              </DSLinkButton>
+            </li>
+          </ul>
+        </nav>
         <nav aria-label='Utility'>
           <ul className={styles.list}>
+            {/* Horizontal divider, with aria-hidden="true" */}
+            <li aria-hidden='true' className={styles.horizontalDivider} />
             <li>
               <DSActionLink
                 href='/?path=/docs/components-navigation-tabs--documentation#'

@@ -1,0 +1,68 @@
+@use '@stihl-design-system/components/styles/scss/ds';
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  gap: ds.$spacing-8;
+}
+
+.input-search-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+// Adjustments for the TopBar Search component
+.input-search--rounded {
+  flex: 1;
+  min-width: 140px;
+
+  @include ds.media-query-min('l') {
+    // set a maximum width on the input on viewports >= L
+    max-width: 544px;
+  }
+
+  input {
+    // make input type search round
+    border-radius: 1.5rem;
+  }
+  // adjust input type search button to be round
+  button {
+    border-radius: 1.5rem;
+  }
+}
+
+// utility navigation styles
+.list {
+  display: flex;
+  align-items: center;
+  gap: ds.$spacing-8;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-menu-button {
+  display: block;
+}
+
+.vertical-divider {
+  width: 0.0625rem; // 1px but in rem to cover font-size: 200%
+  height: 2.5rem;
+  margin-inline: ds.$spacing-8;
+  background-color: ds.$theme-light-border-color-tertiary;
+}
+
+// Utility styles
+.only-mobile {
+  display: block;
+  @include ds.media-query-min('l') {
+    display: none;
+  }
+}
+.only-desktop {
+  display: none;
+  @include ds.media-query-min('l') {
+    display: block;
+  }
+}

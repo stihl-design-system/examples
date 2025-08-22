@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import classNames from 'classnames';
 import { useState, type JSX } from 'react';
+
 import { DSActionButton } from '@stihl-design-system/components';
 import { DSActionLink } from '@stihl-design-system/components';
 import { DSHeader } from '@stihl-design-system/components';
@@ -12,14 +13,14 @@ import { AppSwitch } from '@/components/Header/UtilityNavigation/AppSwitch/AppSw
 import { LanguageSelect } from '@/components/Header/UtilityNavigation/LanguageSelect/LanguageSelect';
 import { MobileMenu } from '@/components/Header/UtilityNavigation/MobileMenu/MobileMenu';
 
-import styles from './HeaderPatternPrimaryArea.module.scss';
+import styles from './HeaderPatternBrandAddOn.module.scss';
 
 export default interface BannerProps
   extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
-export const HeaderExamplePrimaryOnly = (): JSX.Element => {
+export const HeaderExampleBrandCustom = (): JSX.Element => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   return (
     <>
@@ -29,12 +30,20 @@ export const HeaderExamplePrimaryOnly = (): JSX.Element => {
           aria: { 'aria-label': 'STIHL Deutschland Website' },
           href: '/',
         }}
+        brandAddOnProps={{
+          children: 'Official importer',
+          subTitle: 'Company Name Goes Here',
+          variant: 'double',
+        }}
       >
         <DSTopBar >
           <DSTopBar.BrandArea />
 
           <DSTopBar.PrimaryArea>
-            <nav aria-label={'Utility'} className={styles.utilityNavigation}>
+            <nav
+              aria-label={'Utility'}
+              className={styles.utilityNavigationBrandAddOn}
+            >
               <ul className={styles.list}>
                 <li className={styles.onlyDesktop}>
                   <DSActionLink
@@ -59,9 +68,13 @@ export const HeaderExamplePrimaryOnly = (): JSX.Element => {
                 <li className={styles.onlyDesktop}>
                   <LanguageSelect />
                 </li>
-
                 {/* Vertical divider, with aria-hidden="true" */}
-                <li aria-hidden='true' className={styles.verticalDivider} />
+                <li
+                  aria-hidden='true'
+                  className={styles.verticalDividerContainer}
+                >
+                  <div className={styles.verticalDivider} />
+                </li>
 
                 <li className={styles.onlyDesktop}>
                   <AppSwitch />
@@ -101,7 +114,7 @@ export const HeaderExamplePrimaryOnly = (): JSX.Element => {
 
 // Added: Route export for patterns navigation
 export const Route = createFileRoute(
-  '/patterns/Header/PrimaryArea/HeaderPatternPrimaryArea'
+  '/patterns/Header/BrandAddOn/HeaderPatternBrandAddOn'
 )({
-  component: HeaderExamplePrimaryOnly,
+  component: HeaderExampleBrandCustom,
 });

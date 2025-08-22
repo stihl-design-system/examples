@@ -1,0 +1,44 @@
+@use '@stihl-design-system/components/styles/scss/ds';
+
+.list {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  gap: ds.$spacing-24;
+  flex-direction: column;
+  // Make sure the <li> items stretch to fill the available space
+  // This allows the button & link items to fill the available width if wanted.
+  align-items: stretch;
+
+  & > li:last-child {
+    margin-block-end: ds.$spacing-24;
+  }
+}
+
+.menu {
+  // The drawer has a maximum width of 328px and scales down if the width would exceed the safe-zone.
+  // We calculate the maximum content width by subtracting the safe zone (32px).
+  max-width: min(calc(100vw - ds.$spacing-32), 328px);
+
+  @include ds.media-query-min('m') {
+    // On breakpoint 'm' and above, the drawer width is fixed at 328px.
+    min-width: 328px; // @Todo px-to-rem?!
+    max-width: 328px; // @Todo px-to-rem?!
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  // Make sure the bottom navigation is always at the bottom of the menu drawer.
+  justify-content: space-between;
+  height: -webkit-fill-available;
+}
+
+.horizontal-divider {
+  height: 0.0625rem; // 1px but in rem to cover font-size: 200%
+  width: 100%;
+  background-color: ds.$theme-light-border-color-tertiary;
+  margin-block: ds.$spacing-20;
+}

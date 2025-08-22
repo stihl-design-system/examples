@@ -1,14 +1,12 @@
 import classNames from 'classnames';
 import { useState, type JSX } from 'react';
 
-import {
-  DSActionButton,
-  DSButton,
-  DSLinkButton,
-  DSMegaMenu,
-  DSScroller,
-  DSText,
-} from '@stihl-design-system/components';
+import { DSActionButton } from '@stihl-design-system/components';
+import { DSButton } from '@stihl-design-system/components';
+import { DSLinkButton } from '@stihl-design-system/components';
+import { DSMegaMenu } from '@stihl-design-system/components';
+import { DSScroller } from '@stihl-design-system/components';
+import { DSText } from '@stihl-design-system/components';
 import styles from './MainNavigation.module.scss';
 
 export interface MainNavigationProps
