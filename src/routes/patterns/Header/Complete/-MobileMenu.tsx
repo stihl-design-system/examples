@@ -59,7 +59,7 @@ export const MobileMenu = ({
                 iconPosition='right'
                 target='_blank'
               >
-                Professionals
+                Others
               </DSLinkButton>
             </li>
             {/* ... other navigation elements move here from the DSHeader.MainNavigationArea */}

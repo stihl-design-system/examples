@@ -28,8 +28,23 @@ export const MainNavigation = ({
   ...rest
 }: MainNavigationProps): JSX.Element => {
   const mainNavigationClass = classNames(styles.mainNavigation, className);
-  const [isProductsOpen, setIsProductsOpen] = useState(megaMenuOpenOnInit);
-  const [isAccessoriesOpen, setIsAccessoriesOpen] = useState(false);
+
+  // State to manage the open/closed state of the mega menus. Add more items as needed.
+  const [openMenu, setOpenMenu] = useState<'products' | 'accessories' | null>(
+    megaMenuOpenOnInit ? 'products' : null
+  );
+
+  /**
+   * Handle the change of the mega menu state.
+   * @param menu The menu that is being opened or closed.
+   * @param isOpen Whether the menu is open or closed.
+   */
+  const handleMenuChange = (
+    menu: 'products' | 'accessories',
+    isOpen: boolean
+  ) => {
+    setOpenMenu(isOpen ? menu : null);
+  };
 
   return (
     <DSScroller className={mainNavigationClass}>
@@ -37,18 +52,20 @@ export const MainNavigation = ({
         <ul>
           <li>
             <DSMegaMenu
-              isOpen={isProductsOpen}
-              onOpenChange={setIsProductsOpen}
+              isOpen={openMenu === 'products'}
+              onOpenChange={(isOpen) => handleMenuChange('products', isOpen)}
             >
               <DSMegaMenu.Anchor>
                 <DSButton
                   variant='navigation'
                   iconName={'chevron-down'}
                   className={classNames(styles.chevron, {
-                    [styles.chevronOpen]: isProductsOpen,
+                    [styles.chevronOpen]: openMenu === 'products',
                   })}
                   iconPosition='right'
-                  onClick={() => setIsProductsOpen(!isProductsOpen)}
+                  onClick={() =>
+                    setOpenMenu(openMenu === 'products' ? null : 'products')
+                  }
                 >
                   Products
                 </DSButton>
@@ -60,18 +77,22 @@ export const MainNavigation = ({
           </li>
           <li>
             <DSMegaMenu
-              isOpen={isAccessoriesOpen}
-              onOpenChange={setIsAccessoriesOpen}
+              isOpen={openMenu === 'accessories'}
+              onOpenChange={(isOpen) => handleMenuChange('accessories', isOpen)}
             >
               <DSMegaMenu.Anchor>
                 <DSButton
                   variant='navigation'
                   iconName={'chevron-down'}
                   className={classNames(styles.chevron, {
-                    [styles.chevronOpen]: isAccessoriesOpen,
+                    [styles.chevronOpen]: openMenu === 'accessories',
                   })}
                   iconPosition='right'
-                  onClick={() => setIsAccessoriesOpen(!isAccessoriesOpen)}
+                  onClick={() =>
+                    setOpenMenu(
+                      openMenu === 'accessories' ? null : 'accessories'
+                    )
+                  }
                 >
                   Accessories
                 </DSButton>
