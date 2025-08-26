@@ -13,10 +13,10 @@ import { createFileRoute } from '@tanstack/react-router';
 import classNames from 'classnames';
 import { useState, type JSX } from 'react';
 
-import { MainNavigation } from '@/components/Header/MainNavigation/MainNavigation';
-import { Account } from '@/components/Header/UtilityNavigation/Account/Account';
-import { AppSwitch } from '@/components/Header/UtilityNavigation/AppSwitch/AppSwitch';
-import { LanguageSelect } from '@/components/Header/UtilityNavigation/LanguageSelect/LanguageSelect';
+import { MainNavigation } from '../../../../components/Header/MainNavigation/MainNavigation';
+import { Account } from '../../../../components/Header/UtilityNavigation/Account/Account';
+import { AppSwitch } from '../../../../components/Header/UtilityNavigation/AppSwitch/AppSwitch';
+import { LanguageSelect } from '../../../../components/Header/UtilityNavigation/LanguageSelect/LanguageSelect';
 
 import { MobileMenu } from './-MobileMenu';
 import styles from './HeaderPatternComplete.module.scss';
