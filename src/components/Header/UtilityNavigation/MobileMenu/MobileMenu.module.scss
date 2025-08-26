@@ -20,14 +20,13 @@
 }
 
 .menu {
-  // The drawer has a maximum width of 328px and scales down if the width would exceed the safe-zone.
-  // We calculate the maximum content width by subtracting the safe zone (32px).
-  max-width: min(calc(100vw - ds.$spacing-32), 328px);
+  // The drawer has a width of 328px (20.5rem) and scales down if the width would exceed the safe-zone (32px).
+  // We calculate the content width by subtracting the safe zone (32px).
+  width: min(calc(100vw - ds.$spacing-32), 20.5rem);
 
   @include ds.media-query-min('m') {
-    // On breakpoint 'm' and above, the drawer width is fixed at 328px.
-    min-width: 328px; // @Todo px-to-rem?!
-    max-width: 328px; // @Todo px-to-rem?!
+    // On breakpoint 'm' and above, the drawer width is fixed at 328px (20.5rem).
+    width: 20.5rem;
   }
 }
 
