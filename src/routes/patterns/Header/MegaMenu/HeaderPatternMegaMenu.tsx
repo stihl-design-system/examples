@@ -9,7 +9,7 @@ import {
 import { createFileRoute } from '@tanstack/react-router';
 import classNames from 'classnames';
 import { useState, type JSX } from 'react';
-import { MegaMenuContentExample } from '../../../../components/Header/MainNavigation/MainNavigation';
+import { MegaMenuContentExample } from '../../../../components/Header/MainNavigation/MainNavigation.tsx';
 import styles from './HeaderPatternMegaMenu.module.scss';
 
 export default interface BannerProps
