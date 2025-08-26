@@ -4,8 +4,7 @@
     "**/*.tsx",
     "eslint.config.js",
     "prettier.config.js",
-    "vite.config.js",
-    "src/routes/patterns/HeaderPatternPrimaryArea"
+    "vite.config.js"
   ],
 
   "compilerOptions": {
