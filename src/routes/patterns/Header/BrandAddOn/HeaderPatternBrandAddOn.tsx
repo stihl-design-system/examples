@@ -43,8 +43,12 @@ export const HeaderPatternBrandAddOn = (): JSX.Element => {
           <DSTopBar.BrandArea />
 
           <DSTopBar.PrimaryArea>
+            {/**
+             * Screen readers read this out as "Utility, Navigation". So there is no need to add "Navigation" manually to the aria-label.
+             * Don't forget to translate it.
+             */}
             <nav
-              aria-label={'Utility'}
+              aria-label='Utility'
               className={styles.utilityNavigationBrandAddOn}
             >
               <ul className={styles.list}>

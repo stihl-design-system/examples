@@ -37,7 +37,11 @@ export const HeaderPatternPrimaryArea = (): JSX.Element => {
           <DSTopBar.BrandArea />
 
           <DSTopBar.PrimaryArea>
-            <nav aria-label={'Utility'} className={styles.utilityNavigation}>
+            {/**
+             * Screen readers read this out as "Utility, Navigation". So there is no need to add "Navigation" manually to the aria-label.
+             * Don't forget to translate it.
+             */}
+            <nav aria-label='Utility' className={styles.utilityNavigation}>
               <ul className={styles.list}>
                 <li className={styles.onlyDesktop}>
                   <DSActionLink
