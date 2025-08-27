@@ -28,6 +28,10 @@ export const MobileMenu = ({
        * elements are moved into, on viewports < L (1024px).
        */}
       <div className={styles.content}>
+        {/**
+         * Screen readers read this out as "Utility, Navigation". So there is no need to add "Navigation" manually to the aria-label.
+         * Don't forget to translate it.
+         */}
         <nav aria-label='Utility'>
           <ul className={styles.list}>
             <li>

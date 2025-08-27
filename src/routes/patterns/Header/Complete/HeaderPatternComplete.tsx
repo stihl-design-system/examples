@@ -70,7 +70,11 @@ export const HeaderPatternComplete = (): JSX.Element => {
             </form>
           </DSTopBar.PrimaryArea>
           <DSTopBar.SecondaryArea>
-            <nav aria-label={'Utility'}>
+            {/**
+             * Screen readers read this out as "Utility, Navigation". So there is no need to add "Navigation" manually to the aria-label.
+             * Don't forget to translate it.
+             */}
+            <nav aria-label='Utility'>
               <ul className={styles.list}>
                 <li className={styles.onlyDesktop}>
                   <DSActionLink

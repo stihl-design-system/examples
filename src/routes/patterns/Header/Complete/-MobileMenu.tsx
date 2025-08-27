@@ -35,6 +35,10 @@ export const MobileMenu = ({
        * elements are moved into, on viewports < L (1024px).
        */}
       <div className={styles.content}>
+        {/**
+         * Screen readers read this out as "Main, Navigation". So there is no need to add "Navigation" manually to the aria-label.
+         * Don't forget to translate it.
+         */}
         <nav aria-label='Main'>
           <ul className={styles.list}>
             <li>
@@ -69,6 +73,10 @@ export const MobileMenu = ({
             {/* ... other navigation elements move here from the DSHeader.MainNavigationArea */}
           </ul>
         </nav>
+        {/**
+         * Screen readers read this out as "Utility, Navigation". So there is no need to add "Navigation" manually to the aria-label.
+         * Don't forget to translate it.
+         */}
         <nav aria-label='Utility'>
           <ul className={styles.list}>
             {/* Horizontal divider, with aria-hidden="true" */}
