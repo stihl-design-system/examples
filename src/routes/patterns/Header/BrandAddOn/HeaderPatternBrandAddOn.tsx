@@ -17,11 +17,6 @@ import { MobileMenu } from '../../../../components/Header/UtilityNavigation/Mobi
 
 import styles from './HeaderPatternBrandAddOn.module.scss';
 
-export default interface BannerProps
-  extends React.HTMLAttributes<HTMLDivElement> {
-  children?: React.ReactNode;
-}
-
 export const HeaderPatternBrandAddOn = (): JSX.Element => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   return (

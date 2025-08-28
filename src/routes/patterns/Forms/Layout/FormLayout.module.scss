@@ -1,0 +1,66 @@
+@use '@stihl-design-system/components/styles/scss/ds';
+
+.grid {
+  padding-block-start: ds.$spacing-16;
+  padding-block-end: ds.$spacing-16;
+  @include ds.grid;
+}
+
+.content {
+  @include ds.grid-narrow-center-column;
+}
+
+.mandatory-information {
+  margin-block-start: ds.$spacing-16;
+  margin-block-end: ds.$spacing-32;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+
+  @include ds.media-query-min('m') {
+    margin-block-start: ds.$spacing-24;
+    margin-block-end: ds.$spacing-56;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+  }
+}
+
+.fieldset {
+  margin-block-end: ds.$spacing-64;
+}
+
+.input-pair-wrapper {
+  display: grid;
+  gap: var(--ds-grid-gap);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  @include ds.media-query-min('m') {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  @include ds.media-query-min-max('l', 'xl') {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+}
+
+.span-one-third {
+  grid-column: span 4;
+  @include ds.media-query-min('m') {
+    grid-column: span 2;
+  }
+  @include ds.media-query-min-max('l', 'xl') {
+    grid-column: span 3;
+  }
+}
+
+.span-two-thirds {
+  grid-column: span 4;
+  @include ds.media-query-min-max('l', 'xl') {
+    grid-column: span 5;
+  }
+}
+
+.submit-button {
+  grid-column: ds.$grid-narrow-center-column-start /
+    ds.$grid-narrow-center-column-end;
+  @include ds.media-query-min('m') {
+    grid-column: span 2 / ds.$grid-narrow-center-column-end;
+  }
+}
