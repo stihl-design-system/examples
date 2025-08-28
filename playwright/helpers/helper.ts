@@ -439,6 +439,7 @@ export const takeScreenshot = async (
     animations: 'disabled',
     threshold: 0.1,
     maxDiffPixelRatio: 0,
+    fullPage: true,
     ...screenshotOptions,
   });
 };
