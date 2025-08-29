@@ -28,12 +28,11 @@ interface FormValues {
   title?: string;
   firstName?: string;
   lastName?: string;
-  email?: string;
   country?: ComboboxOption;
   notes?: string;
   height?: string;
-  terms?: boolean;
   profilePicture?: File[];
+  terms?: boolean;
 }
 
 interface ErrorValues extends Partial<Omit<FormValues, 'terms' | 'country'>> {
@@ -54,11 +53,6 @@ const validate = (values: FormValues) => {
   if (!values.lastName) {
     errors.lastName = 'Last name is required';
   }
-  if (!values.email) {
-    errors.email = 'E-Mail is required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-    errors.email = 'Invalid e-mail address';
-  }
   if (!values.country) {
     errors.country = 'Country is required';
   }
@@ -76,7 +70,6 @@ export const FormLibrariesFormik = (): JSX.Element => {
   const initialValues: FormValues = {
     firstName: '',
     lastName: '',
-    email: '',
     notes: '',
     height: '',
     terms: false,
@@ -181,17 +174,6 @@ export const FormLibrariesFormik = (): JSX.Element => {
             value={values.lastName}
             invalid={!!(errors.lastName && touched.lastName)}
             systemFeedback={errors.lastName}
-          />
-          <DSInput
-            id='email'
-            label='E-Mail'
-            required={true}
-            autoComplete='family-name'
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.email}
-            invalid={!!(errors.email && touched.email)}
-            systemFeedback={errors.email}
           />
           <DSCombobox
             id='country'

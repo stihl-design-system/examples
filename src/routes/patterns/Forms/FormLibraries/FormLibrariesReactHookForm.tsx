@@ -176,7 +176,10 @@ export const FormLibrariesReactHookForm = (): JSX.Element => {
         </DSFieldset>
         <DSCheckboxGroup
           id='terms-set'
-          legend={{ headingText: 'Terms of Service', headingSize: 'small' }}
+          legend={{
+            headingText: 'Terms of Service',
+            headingSize: 'small',
+          }}
           description='By accessing this website we assume you accept these terms and conditions. Do not continue to use Website Name if you do not agree to take all of the terms and conditions stated on this page.'
           required={true}
           invalid={errors.terms?.type === 'required'}
