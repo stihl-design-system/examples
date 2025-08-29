@@ -16,6 +16,8 @@ const router = createRouter({
   scrollRestoration: true,
   defaultStructuralSharing: true,
   defaultPreloadStaleTime: 0,
+  // Use Vite-provided base URL (e.g., '/examples/') when deployed
+  basepath: import.meta.env.BASE_URL,
 });
 
 // Register the router instance for type safety

@@ -84,9 +84,7 @@ jobs:
       - name: Build for GitHub Pages
         run: |
           # Build with base path for project pages: https://<org>.github.io/<repo>/
-          npm run prebuild
           npx vite build --base=/examples/
-          npx tsc
       - name: Create SPA fallback for GitHub Pages
         run: |
           cp dist/index.html dist/404.html

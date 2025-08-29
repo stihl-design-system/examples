@@ -15,6 +15,8 @@ export default defineConfig({
       localsConvention: 'camelCase',
     },
   },
+  // Respect base from environment (used by GitHub Pages build); fallback to '/'
+  base: process.env.VITE_BASE ?? '/',
   plugins: [
     tanstackRouter({ autoCodeSplitting: true }),
     viteReact(),
