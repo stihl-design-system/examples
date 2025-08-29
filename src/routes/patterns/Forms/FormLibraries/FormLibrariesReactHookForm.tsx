@@ -66,7 +66,12 @@ export const FormLibrariesReactHookForm = (): JSX.Element => {
           </ul>
         </DSNotification>
       )}
-      <form id='order-form' onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form
+        id='order-form'
+        style={{ display: 'grid', gap: 32, padding: 32 }}
+        onSubmit={handleSubmit(onSubmit)}
+        noValidate
+      >
         <DSFieldset
           legend={{ headingText: 'React-Hook Forms', headingTag: 'h2' }}
         >
@@ -187,7 +192,9 @@ export const FormLibrariesReactHookForm = (): JSX.Element => {
             })}
           />
         </DSCheckboxGroup>
-        <DSButton type='submit'>Submit</DSButton>
+        <DSButton style={{ width: 'fit-content' }} type='submit'>
+          Submit
+        </DSButton>
       </form>
     </>
   );

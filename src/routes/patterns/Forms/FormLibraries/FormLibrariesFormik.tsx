@@ -136,7 +136,12 @@ export const FormLibrariesFormik = (): JSX.Element => {
           </ul>
         </DSNotification>
       )}
-      <form id='order-form' onSubmit={handleSubmit} noValidate>
+      <form
+        id='order-form'
+        style={{ display: 'grid', gap: 32, padding: 32 }}
+        onSubmit={handleSubmit}
+        noValidate
+      >
         <DSFieldset legend={{ headingText: 'Personal data', headingTag: 'h2' }}>
           <DSRadioGroup
             legend='Title'
@@ -248,7 +253,9 @@ export const FormLibrariesFormik = (): JSX.Element => {
             invalid={!!(errors.terms && touched.terms)}
           />
         </DSCheckboxGroup>
-        <DSButton type='submit'>Submit</DSButton>
+        <DSButton style={{ width: 'fit-content' }} type='submit'>
+          Submit
+        </DSButton>
       </form>
     </>
   );
