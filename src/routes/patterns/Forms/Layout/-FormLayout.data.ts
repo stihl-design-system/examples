@@ -1,3 +1,7 @@
+/**
+ * This file has a "-" prefix in its filename,
+ * indicating for @tanstack/react-router that this file should be ignored when building the routes.
+ * */
 import type { ComboboxOptionsOrOptGroups } from '@stihl-design-system/components';
 
 export const COUNTRIES: ComboboxOptionsOrOptGroups = [

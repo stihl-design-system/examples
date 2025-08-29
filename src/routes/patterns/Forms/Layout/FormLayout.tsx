@@ -16,7 +16,7 @@ import {
 } from '@stihl-design-system/components';
 import classNames from 'classnames';
 
-import { COUNTRIES } from './FormLayout.data';
+import { COUNTRIES } from './-FormLayout.data';
 import styles from './FormLayout.module.scss';
 
 export const FormLayout = (): JSX.Element => {
