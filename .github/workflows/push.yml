@@ -10,6 +10,11 @@ permissions:
   pages: write
   id-token: write
 
+# Ensure only one Pages deployment runs at a time
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 env:
   NODE_VERSION: 20.16.0
 jobs:
@@ -60,3 +65,46 @@ jobs:
           name: vrt-results
           path: playwright/vrt-results/
           retention-days: 30
+
+  # Build the static site and upload it as a Pages artifact (only on main)
+  build-pages:
+    if: github.ref == 'refs/heads/main'
+    needs:
+      - vrt-playwright
+    name: Build site for GitHub Pages 🚀
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Install
+        run: npm ci
+      - name: Build for GitHub Pages
+        run: |
+          # Build with base path for project pages: https://<org>.github.io/<repo>/
+          npm run prebuild
+          npx vite build --base=/examples/
+          npx tsc
+      - name: Create SPA fallback for GitHub Pages
+        run: |
+          cp dist/index.html dist/404.html
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  # Deploy the artifact to GitHub Pages (only on main)
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs:
+      - build-pages
+    name: Deploy to GitHub Pages 📄
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
