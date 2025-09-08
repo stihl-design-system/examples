@@ -31,7 +31,6 @@ export const HeaderPatternBrandAddOn = (): JSX.Element => {
         brandAddOnProps={{
           children: 'Official importer',
           subTitle: 'Company Name Goes Here',
-          variant: 'double',
         }}
       >
         <DSTopBar>
