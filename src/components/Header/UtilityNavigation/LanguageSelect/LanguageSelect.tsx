@@ -20,6 +20,7 @@ export const LanguageSelect = ({
       placement='bottom-end'
       isOpen={isLanguagePopoverOpen}
       onOpenChange={setIsLanguagePopoverOpen}
+      showArrow={false}
     >
       <DSPopover.Anchor
         onClick={() => setIsLanguagePopoverOpen(!isLanguagePopoverOpen)}

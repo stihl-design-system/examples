@@ -20,6 +20,7 @@ export const AppSwitch = ({
       placement='bottom-end'
       isOpen={isAppPopoverOpen}
       onOpenChange={setIsAppPopoverOpen}
+      showArrow={false}
     >
       <DSPopover.Anchor onClick={() => setIsAppPopoverOpen(!isAppPopoverOpen)}>
         <DSActionButton

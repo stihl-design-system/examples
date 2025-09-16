@@ -9,7 +9,7 @@ import styles from './Account.module.scss';
 
 export const Account = () => {
   return (
-    <DSPopover placement='bottom-end'>
+    <DSPopover placement='bottom-end' showArrow={false}>
       <DSPopover.Anchor>
         <DSActionButton
           // It's important to use a descriptive aria-label here, since the button contains a visual element only instead of a text label.
