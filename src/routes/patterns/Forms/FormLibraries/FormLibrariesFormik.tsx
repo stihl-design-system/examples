@@ -66,7 +66,7 @@ const validate = (values: FormValues) => {
   return errors;
 };
 
-export const FormLibrariesFormik = (): JSX.Element => {
+const FormLibrariesFormik = (): JSX.Element => {
   const initialValues: FormValues = {
     firstName: '',
     lastName: '',

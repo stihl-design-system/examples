@@ -16,7 +16,7 @@ import { MobileMenu } from '../../../../components/Header/UtilityNavigation/Mobi
 
 import styles from './HeaderPatternPrimaryArea.module.scss';
 
-export const HeaderPatternPrimaryArea = (): JSX.Element => {
+const HeaderPatternPrimaryArea = (): JSX.Element => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   return (
     <>

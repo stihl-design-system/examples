@@ -19,7 +19,7 @@ import classNames from 'classnames';
 import { COUNTRIES } from './-FormLayout.data';
 import styles from './FormLayout.module.scss';
 
-export const FormLayout = (): JSX.Element => {
+const FormLayout = (): JSX.Element => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     const data = new FormData(event.currentTarget);
 

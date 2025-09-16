@@ -35,7 +35,7 @@ const COUNTRIES: ComboboxOptionsOrOptGroups = [
   { value: 'GB', label: 'United Kingdom' },
 ];
 
-export const FormLibrariesReactHookForm = (): JSX.Element => {
+const FormLibrariesReactHookForm = (): JSX.Element => {
   const {
     register,
     handleSubmit,

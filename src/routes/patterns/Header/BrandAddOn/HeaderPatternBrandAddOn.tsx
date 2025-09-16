@@ -17,7 +17,7 @@ import { MobileMenu } from '../../../../components/Header/UtilityNavigation/Mobi
 
 import styles from './HeaderPatternBrandAddOn.module.scss';
 
-export const HeaderPatternBrandAddOn = (): JSX.Element => {
+const HeaderPatternBrandAddOn = (): JSX.Element => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   return (
     <>

@@ -21,7 +21,7 @@ import { LanguageSelect } from '../../../../components/Header/UtilityNavigation/
 import { MobileMenu } from './-MobileMenu';
 import styles from './HeaderPatternComplete.module.scss';
 
-export const HeaderPatternComplete = (): JSX.Element => {
+const HeaderPatternComplete = (): JSX.Element => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   return (
     <>

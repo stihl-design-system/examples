@@ -12,7 +12,7 @@ import { useState, type JSX } from 'react';
 import { MegaMenuContentExample } from '../../../../components/Header/MainNavigation/MainNavigation.tsx';
 import styles from './HeaderPatternMegaMenu.module.scss';
 
-export const HeaderPatternMegaMenu = (): JSX.Element => {
+const HeaderPatternMegaMenu = (): JSX.Element => {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   return (
     <>
