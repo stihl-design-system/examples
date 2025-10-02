@@ -54,8 +54,10 @@ const FormLibrariesReactHookForm = (): JSX.Element => {
       {/*  Example for an error summary. Read more in the Fieldset documentation */}
       {Object.keys(errors).length !== 0 && (
         <DSNotification variant='error' hideIcon>
-          <DSHeading size='small'>There is a problem</DSHeading>
-          <ul>
+          <DSHeading id='error-summary-heading' size='small'>
+            There is a problem
+          </DSHeading>
+          <ul aria-labelledby='error-summary-heading'>
             {Object.keys(errors).map((key) => (
               <li key={key}>
                 <DSLink href={`#${key}`}>
