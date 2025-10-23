@@ -80,7 +80,7 @@ const FormLibrariesReactHookForm = (): JSX.Element => {
           >
             {Object.keys(errors).map((key) => (
               <li key={key}>
-                <DSLink href={`#${key}`}>
+                <DSLink href={`#${key}`} iconName='arrow-down'>
                   {errors[key as keyof Inputs]?.message}
                 </DSLink>
               </li>
