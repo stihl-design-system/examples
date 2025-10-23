@@ -101,7 +101,7 @@ const FormLibrariesReactHookForm = (): JSX.Element => {
           <Controller
             name='title'
             control={control}
-            rules={{ required: 'You need to set a title!' }}
+            rules={{ required: 'You need to set a title.' }}
             render={({ field }) => (
               <DSRadioGroup
                 legend='Title'
@@ -127,7 +127,7 @@ const FormLibrariesReactHookForm = (): JSX.Element => {
             invalid={errors.firstName?.type === 'required'}
             systemFeedback={errors.firstName?.message}
             {...register('firstName', {
-              required: 'First name is required!',
+              required: 'First name is required.',
             })}
           />
           <DSInput
@@ -137,13 +137,13 @@ const FormLibrariesReactHookForm = (): JSX.Element => {
             required={true}
             invalid={errors.lastName?.type === 'required'}
             systemFeedback={errors.lastName?.message}
-            {...register('lastName', { required: 'Last name is required!' })}
+            {...register('lastName', { required: 'Last name is required.' })}
           />
           {/* Use of React Hook Form's Controller component to map DSCombobox event handler */}
           <Controller
             name='country'
             control={control}
-            rules={{ required: 'You need to select a country!' }}
+            rules={{ required: 'You need to select a country.' }}
             render={({ field }) => (
               <DSCombobox
                 id='country'
@@ -166,7 +166,7 @@ const FormLibrariesReactHookForm = (): JSX.Element => {
             invalid={errors.notes?.type === 'required'}
             systemFeedback={errors.notes?.message}
             {...register('notes', {
-              required: 'Please provide some notes!',
+              required: 'Please provide some notes.',
             })}
           />
           <Controller
@@ -213,7 +213,7 @@ const FormLibrariesReactHookForm = (): JSX.Element => {
             id='terms'
             invalid={errors.terms?.type === 'required'}
             {...register('terms', {
-              required: 'You need to accept the terms!',
+              required: 'You need to accept the terms.',
             })}
           />
         </DSCheckboxGroup>
