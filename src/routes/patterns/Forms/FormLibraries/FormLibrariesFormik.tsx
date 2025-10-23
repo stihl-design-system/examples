@@ -13,6 +13,7 @@ import {
   DSNotification,
   DSRadioGroup,
   DSSlider,
+  DSText,
   DSTextarea,
 } from '@stihl-design-system/components';
 import { createFileRoute } from '@tanstack/react-router';
@@ -116,14 +117,33 @@ const FormLibrariesFormik = (): JSX.Element => {
     <>
       {/*  Example for an error summary. Read more in the Fieldset documentation */}
       {Object.keys(errors).length !== 0 && (
-        <DSNotification variant='error' hideIcon>
-          <DSHeading id='error-summary-heading' size='small'>
-            There is a problem
+        <DSNotification
+          variant='error'
+          hideIcon
+          style={{ marginBlockEnd: '24px' }}
+          aria-labelledby='error-summary-heading'
+          aria-describedby='error-summary-text'
+        >
+          <DSHeading id='error-summary-heading' size='medium' tag='h3'>
+            Invalid entries.
           </DSHeading>
-          <ul aria-labelledby='error-summary-heading'>
+          <DSText id='error-summary-text' style={{ marginBlockEnd: '12px' }}>
+            Please check the details below.
+          </DSText>
+          <ul
+            aria-labelledby='error-summary-heading'
+            style={{
+              listStyleType: 'none',
+              padding: 0,
+              margin: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '12px',
+            }}
+          >
             {Object.keys(errors).map((key) => (
               <li key={key}>
-                <DSLink href={`#${key}`}>
+                <DSLink href={`#${key}`} iconName='arrow-down'>
                   {errors[key as keyof ErrorValues]}
                 </DSLink>
               </li>
