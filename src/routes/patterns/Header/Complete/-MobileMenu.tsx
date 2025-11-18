@@ -46,6 +46,7 @@ export const MobileMenu = ({
                 variant='navigation'
                 iconName='chevron-right'
                 iconPosition='right'
+                stretched
               >
                 Products
               </DSButton>
@@ -55,6 +56,7 @@ export const MobileMenu = ({
                 variant='navigation'
                 iconName='chevron-right'
                 iconPosition='right'
+                stretched
               >
                 Accessories
               </DSButton>
@@ -66,6 +68,7 @@ export const MobileMenu = ({
                 iconName='arrow-out'
                 iconPosition='right'
                 target='_blank'
+                stretched
               >
                 Others
               </DSLinkButton>

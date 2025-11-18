@@ -166,6 +166,7 @@ export const MegaMenuContentExample = ({
                   role='menuitem'
                   chevronDirection='right'
                   isActive={index === 0}
+                  stretched
                 >
                   {item}
                 </DSActionButton>
