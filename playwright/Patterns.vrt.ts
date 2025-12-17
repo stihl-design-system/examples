@@ -1,5 +1,7 @@
 import { runVisualRegressionTest } from './helpers/helper';
 
+runVisualRegressionTest('patterns/Cards/LinkCardGrid/LinkCardGridPattern', {fileNamePrefix: 'LinkCardGridPattern-'});
+runVisualRegressionTest('patterns/Cards/LinkCardResponsive/LinkCardResponsivePattern', {fileNamePrefix: 'LinkCardResponsivePattern-'});
 runVisualRegressionTest('patterns/Forms/FormLibraries/FormLibrariesFormik', {fileNamePrefix: 'FormLibrariesFormik-'});
 runVisualRegressionTest('patterns/Forms/FormLibraries/FormLibrariesReactHookForm', {fileNamePrefix: 'FormLibrariesReactHookForm-'});
 runVisualRegressionTest('patterns/Forms/Layout/FormLayout', {fileNamePrefix: 'FormLayout-'});
