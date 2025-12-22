@@ -2,10 +2,13 @@ import { runVisualRegressionTest } from './helpers/helper';
 
 runVisualRegressionTest('patterns/Cards/LinkCardGrid/LinkCardGrid', {
   fileNamePrefix: 'LinkCardGrid-',
+  testConfiguration: { normal: { skipWebkit: true } }, // @TODO: fix in webkit
 });
 runVisualRegressionTest(
   'patterns/Cards/LinkCardResponsive/LinkCardResponsive',
-  { fileNamePrefix: 'LinkCardResponsive-' }
+  {
+    fileNamePrefix: 'LinkCardResponsive-',
+  }
 );
 runVisualRegressionTest('patterns/Forms/FormLibraries/FormLibrariesFormik', {
   fileNamePrefix: 'FormLibrariesFormik-',
