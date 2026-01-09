@@ -11,8 +11,7 @@ import {
 } from '@stihl-design-system/components';
 import styles from './MainNavigation.module.scss';
 
-export interface MainNavigationProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface MainNavigationProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   megaMenuOpenOnInit?: boolean;
 }
