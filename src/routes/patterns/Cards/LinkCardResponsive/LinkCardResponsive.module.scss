@@ -1,0 +1,89 @@
+@use '@stihl-design-system/components/styles/scss/ds';
+
+.page {
+  // Simple page styling for the example.
+  padding: ds.$spacing-64;
+}
+
+.card-container {
+  // Define container for card orientation queries. This should always be done to the
+  // wrapping element of the card. In grids this is usually the <li> element.
+  container-type: inline-size;
+  container-name: card-orientation;
+}
+
+// Default responsive behavior:
+// Vertical layout up to a card width of 687px, horizontal layout above.
+
+// Applies the same styles as the orientation='horizontal' prop.
+// No need to set that prop to horizontal when using this responsive container query method.
+@container card-orientation (width > 687px) {
+  .card-responsive {
+    flex-direction: row;
+    width: 100%;
+
+    // Increase max-width from vertical layout to allow wider cards in horizontal layout.
+    max-width: 1435px;
+  }
+
+  // In horizontal layout, make the image square. This is defined by Design.
+  .card-image-wrapper {
+    aspect-ratio: 1/1;
+    flex: 1;
+
+    img {
+      // Ensure the image border radius matches the design in horizontal layout.
+      border-top-right-radius: 0;
+      border-top-left-radius: ds.$spacing-4;
+      border-bottom-left-radius: ds.$spacing-4;
+      aspect-ratio: 1/1;
+    }
+  }
+
+  .card-content-wrapper {
+    padding: ds.$spacing-32;
+    height: auto;
+    flex: 1;
+  }
+}
+
+@container card-orientation (width > 859px) {
+  // These max-width constraints help to keep the image smaller on wider cards,
+  // which is requested by Design. In Figma the image just grows as high as the
+  // card content makes the card (hug).
+  .card-image-wrapper {
+    max-width: 200px;
+  }
+
+  // When card width is above 859px, use a two-column layout for card content.
+  // Footer with meta data, flags and decorative link button are moved and aligned to the right.
+  .card-content-wrapper {
+    flex-direction: row;
+    gap: ds.$spacing-64;
+    width: 100%;
+  }
+
+  .card-header-wrapper {
+    flex: 2;
+  }
+
+  .card-footer-wrapper {
+    flex: 1;
+    margin-block-start: unset;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .card-flags-wrapper {
+    justify-content: flex-end;
+  }
+}
+
+@container card-orientation (width > 1100px) {
+  // These max-width constraints help to keep the image smaller on wider cards,
+  // which is requested by Design. In Figma the image just grows as high as the
+  // card content makes the card (hug).
+  .card-image-wrapper {
+    max-width: 180px;
+  }
+}

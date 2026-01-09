@@ -46,22 +46,22 @@ const validate = (values: FormValues) => {
   const errors: Partial<ErrorValues> = {};
 
   if (!values.title) {
-    errors.title = 'Title is required';
+    errors.title = 'Title is required.';
   }
   if (!values.firstName) {
-    errors.firstName = 'First name is required!';
+    errors.firstName = 'First name is required.';
   }
   if (!values.lastName) {
-    errors.lastName = 'Last name is required';
+    errors.lastName = 'Last name is required.';
   }
   if (!values.country) {
-    errors.country = 'Country is required';
+    errors.country = 'Country is required.';
   }
   if (!values.notes) {
-    errors.notes = 'Notes are required';
+    errors.notes = 'Notes are required.';
   }
   if (!values.terms) {
-    errors.terms = 'Terms must be accepted';
+    errors.terms = 'Terms must be accepted.';
   }
 
   return errors;

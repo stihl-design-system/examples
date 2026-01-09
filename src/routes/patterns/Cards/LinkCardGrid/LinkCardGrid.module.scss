@@ -1,0 +1,33 @@
+@use '@stihl-design-system/components/styles/scss/ds';
+
+// Initialize the STIHL Design System grid
+.page {
+  padding-block: ds.$spacing-48;
+  @include ds.grid;
+}
+
+// Use the main grid column for the content
+.row {
+  @include ds.grid-main-column;
+}
+
+.heading {
+  @include ds.grid-main-column;
+}
+
+.card-list {
+  display: grid;
+  // Create a responsive grid with a minimum card width of 330px.
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: ds.$spacing-24;
+
+  // Remove default list styles
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card-item {
+  // Make sure each card takes the full height of the grid item
+  height: 100%;
+}
