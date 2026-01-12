@@ -37,10 +37,11 @@ export const MobileMenu = ({
             <li>
               <DSActionLink
                 href='/?path=/docs/components-navigation-tabs--documentation#'
+                iconName='envelope'
                 iconPosition='left'
                 stretched={true}
-                iconName='envelope'
                 numberIndicatorValue=''
+                numberIndicatorAriaLabel='New messages'
               >
                 Contact
               </DSActionLink>

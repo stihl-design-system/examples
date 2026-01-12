@@ -49,9 +49,10 @@ const HeaderPatternBrandAddOn = (): JSX.Element => {
                 <li className={styles.onlyDesktop}>
                   <DSActionLink
                     href='/?path=/docs/components-navigation-tabs--documentation#'
-                    iconPosition='top'
                     iconName='envelope'
+                    iconPosition='top'
                     numberIndicatorValue=''
+                    numberIndicatorAriaLabel='New messages'
                   >
                     Contact
                   </DSActionLink>
@@ -59,9 +60,10 @@ const HeaderPatternBrandAddOn = (): JSX.Element => {
                 <li>
                   <DSActionLink
                     href='/?path=/docs/components-navigation-tabs--documentation#'
+                    iconName='cart'
                     iconPosition='top'
                     numberIndicatorValue='5'
-                    iconName='cart'
+                    numberIndicatorAriaLabel='5 items in cart'
                   >
                     Cart
                   </DSActionLink>
