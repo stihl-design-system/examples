@@ -12,6 +12,22 @@
   container-name: card-orientation;
 }
 
+// Padding inside the card content area wrapper.
+// This matches the setting of the 'padding' prop 'small'.
+// No need to set that prop to 'small' when using this responsive container query method.
+.card-content-wrapper {
+  padding: ds.$spacing-16;
+}
+
+// Change content padding when card width exceeds 420px.
+// This matches the setting of the 'padding' prop 'medium'.
+// No need to set that prop to 'medium' when using this responsive container query method.
+@container card-orientation (width > 420px) {
+  .card-content-wrapper {
+    padding: ds.$spacing-24;
+  }
+}
+
 // Default responsive behavior:
 // Vertical layout up to a card width of 687px, horizontal layout above.
 

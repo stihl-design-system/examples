@@ -1,6 +1,7 @@
 import {
   type ComboboxOption,
   type ComboboxOptionsOrOptGroups,
+  type FileWithUploadMeta,
   DSButton,
   DSCheckbox,
   DSCheckboxGroup,
@@ -233,7 +234,9 @@ const FormLibrariesFormik = (): JSX.Element => {
             label='Profile picture'
             id='profilePicture'
             hint='Your profile picture should be any image format'
-            onFilesSelect={(files: File[]) => handleProfilePictureChange(files)}
+            onFilesSelect={(files: FileWithUploadMeta[]) =>
+              handleProfilePictureChange(files)
+            }
           />
         </DSFieldset>
         <DSCheckboxGroup

@@ -1,5 +1,9 @@
 import { runVisualRegressionTest } from './helpers/helper';
 
+runVisualRegressionTest(
+  'patterns/Cards/ActionCardResponsive/ActionCardResponsive',
+  { fileNamePrefix: 'ActionCardResponsive-' }
+);
 runVisualRegressionTest('patterns/Cards/LinkCardGrid/LinkCardGrid', {
   fileNamePrefix: 'LinkCardGrid-',
   testConfiguration: { normal: { skipWebkit: true } },
