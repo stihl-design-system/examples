@@ -12,7 +12,6 @@
   container-name: card-orientation;
 }
 
-.card-header-slot,
 .card-footer-slot {
   display: flex;
   flex-direction: column;
@@ -32,13 +31,28 @@
   padding: ds.$spacing-16;
 }
 
+.card-heading {
+  margin-block-end: ds.$spacing-8;
+}
+
+.card-description {
+  // Limit description text to 3 lines with ellipsis
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
 .card-flags-list {
   display: flex;
   flex-wrap: wrap;
   gap: ds.$spacing-8;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin-inline: 0;
+  margin-block-start: 0;
+  margin-block-end: ds.$spacing-16;
 }
 
 .accordion {

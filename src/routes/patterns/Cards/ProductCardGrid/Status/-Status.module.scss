@@ -1,0 +1,32 @@
+/**
+ * This file has a "-" prefix in its filename,
+ * indicating for @tanstack/react-router that this file should be ignored when building the routes.
+ * */
+@use '@stihl-design-system/components/styles/scss/ds';
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  color: ds.$theme-light-content-color-primary;
+  gap: ds.$spacing-6;
+  @include ds.text-small;
+}
+
+.indicator {
+  display: inline-block;
+  inline-size: 8px;
+  block-size: 8px;
+  border-radius: 50%;
+}
+
+.indicator-tone-negative {
+  background-color: ds.$theme-light-content-color-feedback-error;
+}
+
+.indicator-tone-neutral {
+  background-color: ds.$theme-light-content-color-tertiary-inverse;
+}
+
+.indicator-tone-positive {
+  background-color: ds.$theme-light-content-color-feedback-success;
+}

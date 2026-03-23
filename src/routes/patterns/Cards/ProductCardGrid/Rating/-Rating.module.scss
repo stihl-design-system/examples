@@ -1,0 +1,50 @@
+/**
+ * This file has a "-" prefix in its filename,
+ * indicating for @tanstack/react-router that this file should be ignored when building the routes.
+ * */
+@use '@stihl-design-system/components/styles/scss/ds';
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: ds.$spacing-8;
+
+  @include ds.text-small;
+}
+
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: ds.$spacing-2;
+}
+
+.star-full {
+  fill: ds.$theme-light-background-color-brand;
+}
+
+.star-empty {
+  fill: ds.$theme-light-background-color-brand-disabled;
+}
+
+.star-partial {
+  position: relative;
+  display: inline-flex;
+}
+
+.star-partial-fill {
+  position: absolute;
+  inset-block-start: ds.$spacing-0;
+  inset-inline-start: ds.$spacing-0;
+  display: inline-flex;
+  overflow: hidden;
+  inline-size: var(--rating-partial-fill, 50%);
+  block-size: 100%;
+  z-index: 1;
+}
+
+.value-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: ds.$spacing-4;
+  color: ds.$theme-light-content-color-primary;
+}

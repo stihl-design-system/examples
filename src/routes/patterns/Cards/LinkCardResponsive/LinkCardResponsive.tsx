@@ -13,7 +13,7 @@ const LinkCardResponsivePattern = (): JSX.Element => {
           className={styles['card-responsive']}
           cardClassNames={{
             contentWrapper: styles['card-content-wrapper'],
-            imageWrapper: styles['card-image-wrapper'],
+            mediaWrapper: styles['card-image-wrapper'],
             headerWrapper: styles['card-header-wrapper'],
             footerWrapper: styles['card-footer-wrapper'],
             flagsWrapper: styles['card-flags-wrapper'],

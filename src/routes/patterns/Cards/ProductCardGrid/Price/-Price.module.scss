@@ -1,0 +1,51 @@
+/**
+ * This file has a "-" prefix in its filename,
+ * indicating for @tanstack/react-router that this file should be ignored when building the routes.
+ * */
+@use '@stihl-design-system/components/styles/scss/ds';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-block-end: ds.$spacing-2;
+}
+
+.primary-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: ds.$spacing-6;
+  min-height: 24px;
+}
+
+.label {
+  margin-block-end: ds.$spacing-8;
+}
+
+.amount {
+  color: ds.$theme-light-content-color-primary;
+  @include ds.text-large-bold;
+}
+
+.vat {
+  color: ds.$theme-light-content-color-secondary;
+  @include ds.utility-small;
+}
+
+.discount-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: ds.$spacing-6;
+}
+
+.previous-amount {
+  text-decoration-line: line-through;
+  @include ds.utility-small;
+}
+
+.savings {
+  color: ds.$theme-light-content-color-primary;
+  @include ds.utility-small-bold;
+}
