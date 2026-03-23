@@ -31,6 +31,13 @@ export interface StatusProps extends HTMLAttributes<HTMLDivElement> {
   variant?: StatusVariant;
 }
 
+/**
+ * Example implementation pattern for a Status component.
+ *
+ * !! This is just an example and is NOT an official design system component.
+ * !! It is only used for demonstration purposes in the ProductCardGrid template and is not part of the design system's public API.
+ *
+ */
 export const Status = ({
   aria,
   children,

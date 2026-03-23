@@ -18,7 +18,7 @@
 .card-list {
   display: grid;
   // Create a responsive grid with a minimum card width of 330px.
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20.625rem, 1fr));
   gap: ds.$spacing-24;
 
   // Remove default list styles

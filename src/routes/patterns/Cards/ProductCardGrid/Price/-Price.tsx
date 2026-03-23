@@ -29,6 +29,13 @@ export interface PriceProps extends HTMLAttributes<HTMLDivElement> {
   vatLabel?: string;
 }
 
+/**
+ * Example implementation pattern for a Price component.
+ *
+ * !! This is just an example and is NOT an official design system component.
+ * !! It is only used for demonstration purposes in the ProductCardGrid template and is not part of the design system's public API.
+ *
+ */
 export const Price = ({
   amount,
   className,

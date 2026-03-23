@@ -45,8 +45,11 @@ export interface RatingProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * Displays a 5-star rating with optional count.
- * Example: ★★★★☆ 4.6 (14)
+ * Example implementation pattern for a Rating component.
+ *
+ * !! This is just an example and is NOT an official design system component.
+ * !! It is only used for demonstration purposes in the ProductCardGrid template and is not part of the design system's public API.
+ *
  */
 export const Rating: React.FC<RatingProps> = ({
   aria,
