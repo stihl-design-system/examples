@@ -28,6 +28,10 @@
   @include ds.text-large-bold;
 }
 
+.amount-discount {
+  color: ds.$theme-light-content-color-brand;
+}
+
 .vat {
   color: ds.$theme-light-content-color-secondary;
   @include ds.utility-small;

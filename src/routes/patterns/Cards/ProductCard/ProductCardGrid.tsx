@@ -38,6 +38,7 @@ const ProductCardGridPattern = (): JSX.Element => {
               aria={{ 'aria-labelledby': 'product-card-1' }}
               className={styles.cardItem}
               classNameContentWrapper={styles.cardContent}
+              padding='small'
             >
               {/* PrimaryAction makes the entire card clickable while keeping other interactive elements accessible */}
               <DSActionCard.PrimaryAction
@@ -130,6 +131,7 @@ const ProductCardGridPattern = (): JSX.Element => {
               aria={{ 'aria-labelledby': 'product-card-2' }}
               className={styles.cardItem}
               classNameContentWrapper={styles.cardContent}
+              padding='small'
             >
               <DSActionCard.PrimaryAction href='#' target='_self'>
                 Go to product details
@@ -213,6 +215,7 @@ const ProductCardGridPattern = (): JSX.Element => {
               aria={{ 'aria-labelledby': 'product-card-3' }}
               className={styles.cardItem}
               classNameContentWrapper={styles.cardContent}
+              padding='small'
             >
               <DSActionCard.PrimaryAction href='#' target='_self'>
                 Go to product details
@@ -302,6 +305,7 @@ const ProductCardGridPattern = (): JSX.Element => {
               aria={{ 'aria-labelledby': 'product-card-4' }}
               className={styles.cardItem}
               classNameContentWrapper={styles.cardContent}
+              padding='small'
             >
               <DSActionCard.PrimaryAction href='#' target='_self'>
                 Go to product details
@@ -391,6 +395,7 @@ const ProductCardGridPattern = (): JSX.Element => {
               aria={{ 'aria-labelledby': 'product-card-5' }}
               className={styles.cardItem}
               classNameContentWrapper={styles.cardContent}
+              padding='small'
             >
               <DSActionCard.PrimaryAction href='#' target='_self'>
                 Go to product details
@@ -471,6 +476,7 @@ const ProductCardGridPattern = (): JSX.Element => {
               aria={{ 'aria-labelledby': 'product-card-6' }}
               className={styles.cardItem}
               classNameContentWrapper={styles.cardContent}
+              padding='small'
             >
               <DSActionCard.PrimaryAction href='#' target='_self'>
                 Go to product details
@@ -549,6 +555,7 @@ const ProductCardGridPattern = (): JSX.Element => {
               aria={{ 'aria-labelledby': 'product-card-7' }}
               className={styles.cardItem}
               classNameContentWrapper={styles.cardContent}
+              padding='small'
             >
               <DSActionCard.PrimaryAction href='#' target='_self'>
                 Go to product details
@@ -640,7 +647,7 @@ const ProductCardGridPattern = (): JSX.Element => {
 
 // Added: Route export for patterns navigation
 export const Route = createFileRoute(
-  '/patterns/Cards/ProductCardGrid/ProductCardGrid'
+  '/patterns/Cards/ProductCard/ProductCardGrid'
 )({
   component: ProductCardGridPattern,
 });

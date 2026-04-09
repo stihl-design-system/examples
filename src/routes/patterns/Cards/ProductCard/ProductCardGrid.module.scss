@@ -74,12 +74,6 @@
   inset-inline-start: ds.$spacing-16;
 }
 
-// Reduced padding for product card compared to default action card content padding
-.card-content {
-  padding-inline: ds.$spacing-16;
-  padding-block: ds.$spacing-16;
-}
-
 // HEADER SLOT
 .card-heading {
   margin-block-end: ds.$spacing-8;
