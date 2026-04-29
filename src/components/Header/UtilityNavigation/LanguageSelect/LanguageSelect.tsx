@@ -8,7 +8,7 @@ import { useState } from 'react';
 import styles from './LanguageSelect.module.scss';
 
 export const LanguageSelect = ({
-  popoverOpenOnInit,
+  popoverOpenOnInit = false,
 }: {
   popoverOpenOnInit?: boolean;
 }) => {

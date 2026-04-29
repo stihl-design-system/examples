@@ -30,7 +30,7 @@
   width: 100%;
   background-color: ds.$theme-light-border-color-tertiary;
   // Horizontal divider normal got 6px block margin, but since in Figma it is all in one flex-container with
-  // 4px gap, and in code we don't do that, we need to add those 4px gap to our block margin.
+  // 4px gap, and in code we don't do that, we need to add those 4px gap to our block margin of 6px.
   margin-block: 10px;
 }
 
@@ -63,9 +63,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 18.75rem;
+  min-width: 18.75rem; // 300px
   padding-inline: ds.$spacing-16;
-  padding-block: 10px;
+  padding-block: ds.$spacing-8;
 
   &--left {
     display: flex;

@@ -1,7 +1,6 @@
 import {
   DSActionCard,
   DSButton,
-  DSButtonRound,
   DSCheckbox,
   DSFlag,
   DSHeading,
@@ -10,7 +9,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { type JSX } from 'react';
 import { BatteryIcon } from './BatteryIcon/-BatteryIcon';
 import { Price } from './Price/-Price';
-import styles from './ProductCardGrid.module.scss';
+import styles from './ProductCardList.module.scss';
 import { Rating } from './Rating/-Rating';
 import { Status } from './Status/-Status';
 
@@ -23,20 +22,21 @@ import { Status } from './Status/-Status';
  * !! and are only implemented for demonstration purposes. They can be replaced with any other components or custom implementations as needed. !!
  *
  */
-const ProductCardGridPattern = (): JSX.Element => {
+const ProductCardListPattern = (): JSX.Element => {
   return (
     <div className={styles.page}>
       <DSHeading className={styles.heading} tag='h2' size='large'>
-        Product Cards in Grid
+        Product Cards in List
       </DSHeading>
       <div className={styles.row}>
         {/* Use a descriptive label for the list */}
-        <ul className={styles.cardList} aria-label='Product Card Grid'>
-          <li>
+        <ul className={styles.cardList} aria-label='Product Card List'>
+          <li className={styles.listItem}>
             <DSActionCard
+              orientation='horizontal'
               // Use aria-labelledby to associate the card with its heading for better accessibility
               aria={{ 'aria-labelledby': 'product-card-1' }}
-              className={styles.cardItem}
+              className={styles.productCard}
               classNameContentWrapper={styles.cardContent}
             >
               {/* PrimaryAction makes the entire card clickable while keeping other interactive elements accessible */}
@@ -48,7 +48,10 @@ const ProductCardGridPattern = (): JSX.Element => {
                 {/* Use a descriptive label where the link leads to */}
                 Go to product details
               </DSActionCard.PrimaryAction>
-              <DSActionCard.Header>
+              <DSActionCard.Header className={styles.header}>
+                <DSFlag className={styles.promo} color='promo-neutral'>
+                  New
+                </DSFlag>
                 <DSHeading
                   className={styles.cardHeading}
                   // The id should be unique and descriptive to ensure it correctly references the card for screen readers
@@ -66,31 +69,50 @@ const ProductCardGridPattern = (): JSX.Element => {
                   count={64}
                 />
                 <div className={styles.category}>Chainsaws</div>
-                <div className={styles.description}>
-                  Universal professional gas-powered chainsaw.
+                <div className={styles.descriptionMobile}>
+                  Lorem ipsum · Quam · Adipiscing ultricies
                 </div>
-                <div className={styles.availability}>
-                  {/* Example implementation of a status component. Replace with your own status component if needed. */}
-                  <Status variant='positive'>Available</Status>
-                </div>
+                <ul className={styles.description}>
+                  <li>Lorem ipsum dolor sit amet consectetur.</li>
+                  <li>
+                    Quam pretium diam consequat pretium purus senectus et orci
+                    eu.
+                  </li>
+                  <li>
+                    Adipiscing ultricies neque sed proin aliquet dictum in.
+                  </li>
+                </ul>
               </DSActionCard.Header>
               <DSActionCard.Footer className={styles.footer}>
-                <div className={styles.footerLeft}>
-                  {/* Example implementation of a price component. Replace with your own price component if needed. */}
-                  <Price amount='11.199,00 €' />
-                  <DSCheckbox label='Compare' />
-                </div>
-                <div>
-                  <DSButtonRound
-                    size='medium'
-                    aria={{ 'aria-label': 'Add to cart' }}
+                {/* Example implementation of a price component. Replace with your own price component if needed. */}
+                <Price amount='11.199,00 €' />
+                {/* Example implementation of a status component. Replace with your own status component if needed. */}
+                <Status className={styles.status} variant='positive'>
+                  Available
+                </Status>
+                <div className={styles.actions}>
+                  <DSButton
+                    size='small'
                     iconName='cart-plus'
+                    className={styles.cta}
                     variant='highlight'
                     onClick={() => console.log('Add to cart')}
+                    stretched={true}
                   >
-                    Shop
-                  </DSButtonRound>
+                    <span className={styles.ctaLabel}>Add to cart</span>
+                    <span className={styles.ctaLabelMobile}>Add</span>
+                  </DSButton>
+                  <DSButton
+                    hideLabel={true}
+                    size='small'
+                    variant='outline'
+                    iconName='heart'
+                    className={styles.favoriteButton}
+                  >
+                    Add to favorites
+                  </DSButton>
                 </div>
+                <DSCheckbox className={styles.compare} label='Compare' />
               </DSActionCard.Footer>
               <DSActionCard.Media className={styles.mediaWrapper}>
                 <img
@@ -106,35 +128,27 @@ const ProductCardGridPattern = (): JSX.Element => {
                   className={styles.batteryInfo}
                 >
                   <li>
+                    {/* Example implementation of a battery icon component. Replace with your own battery icon component if needed. */}
                     <BatteryIcon variant='ak' aria-label='AK-System' />
                   </li>
                 </ul>
-                <DSButton
-                  hideLabel={true}
-                  size='small'
-                  variant='ghost'
-                  iconName='heart'
-                  className={styles.favoriteButton}
-                >
-                  Add to favorites
-                </DSButton>
-
-                <DSFlag className={styles.promo} color='orange-base'>
-                  New
-                </DSFlag>
               </DSActionCard.Media>
             </DSActionCard>
           </li>
-          <li>
+          <li className={styles.listItem}>
             <DSActionCard
+              orientation='horizontal'
               aria={{ 'aria-labelledby': 'product-card-2' }}
-              className={styles.cardItem}
+              className={styles.productCard}
               classNameContentWrapper={styles.cardContent}
             >
               <DSActionCard.PrimaryAction href='#' target='_self'>
                 Go to product details
               </DSActionCard.PrimaryAction>
-              <DSActionCard.Header>
+              <DSActionCard.Header className={styles.header}>
+                <DSFlag className={styles.promo} color='promo-neutral'>
+                  New
+                </DSFlag>
                 <DSHeading
                   className={styles.cardHeading}
                   id='product-card-2'
@@ -150,30 +164,48 @@ const ProductCardGridPattern = (): JSX.Element => {
                   count={112}
                 />
                 <div className={styles.category}>Chainsaws</div>
-                <div className={styles.description}>
-                  Gas-powered chainsaw for cutting firewood and for property
-                  maintenance.
+                <div className={styles.descriptionMobile}>
+                  Lorem ipsum · Quam · Adipiscing ultricies
                 </div>
-                <div className={styles.availability}>
-                  <Status variant='negative'>Out of stock</Status>
-                </div>
+                <ul className={styles.description}>
+                  <li>Lorem ipsum dolor sit amet consectetur.</li>
+                  <li>
+                    Quam pretium diam consequat pretium purus senectus et orci
+                    eu.
+                  </li>
+                  <li>
+                    Adipiscing ultricies neque sed proin aliquet dictum in.
+                  </li>
+                </ul>
               </DSActionCard.Header>
               <DSActionCard.Footer className={styles.footer}>
-                <div className={styles.footerLeft}>
-                  <Price amount='8.999,00 €' vatLabel='incl. VAT' />
-                  <DSCheckbox label='Compare' />
-                </div>
-                <div>
-                  <DSButtonRound
-                    size='medium'
-                    aria={{ 'aria-label': 'Add to cart' }}
+                <Price amount='8.999,00 €' vatLabel='incl. VAT' />
+                <Status className={styles.status} variant='negative'>
+                  Out of stock
+                </Status>
+                <div className={styles.actions}>
+                  <DSButton
+                    size='small'
                     iconName='cart-plus'
+                    className={styles.cta}
                     variant='highlight'
                     onClick={() => console.log('Add to cart')}
+                    stretched={true}
                   >
-                    Shop
-                  </DSButtonRound>
+                    <span className={styles.ctaLabel}>Add to cart</span>
+                    <span className={styles.ctaLabelMobile}>Add</span>
+                  </DSButton>
+                  <DSButton
+                    hideLabel={true}
+                    size='small'
+                    variant='outline'
+                    iconName='heart'
+                    className={styles.favoriteButton}
+                  >
+                    Add to favorites
+                  </DSButton>
                 </div>
+                <DSCheckbox className={styles.compare} label='Compare' />
               </DSActionCard.Footer>
               <DSActionCard.Media className={styles.mediaWrapper}>
                 <img
@@ -191,33 +223,24 @@ const ProductCardGridPattern = (): JSX.Element => {
                     <BatteryIcon variant='as' aria-label='AS-System' />
                   </li>
                 </ul>
-                <DSButton
-                  hideLabel={true}
-                  size='small'
-                  variant='ghost'
-                  iconName='heart'
-                  className={styles.favoriteButton}
-                >
-                  Add to favorites
-                </DSButton>
-
-                <DSFlag className={styles.promo} color='orange-base'>
-                  New
-                </DSFlag>
               </DSActionCard.Media>
             </DSActionCard>
           </li>
 
-          <li>
+          <li className={styles.listItem}>
             <DSActionCard
+              orientation='horizontal'
               aria={{ 'aria-labelledby': 'product-card-3' }}
-              className={styles.cardItem}
+              className={styles.productCard}
               classNameContentWrapper={styles.cardContent}
             >
               <DSActionCard.PrimaryAction href='#' target='_self'>
                 Go to product details
               </DSActionCard.PrimaryAction>
-              <DSActionCard.Header>
+              <DSActionCard.Header className={styles.header}>
+                <DSFlag className={styles.promo} color='promo-neutral'>
+                  New
+                </DSFlag>
                 <DSHeading
                   className={styles.cardHeading}
                   id='product-card-3'
@@ -234,38 +257,55 @@ const ProductCardGridPattern = (): JSX.Element => {
                   count={39}
                 />
                 <div className={styles.category}>Chainsaws</div>
-                <div className={styles.description}>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua.
+                <div className={styles.descriptionMobile}>
+                  Lorem ipsum · Quam · Adipiscing ultricies
                 </div>
-                <div className={styles.availability}>
-                  <Status variant='positive'>Available</Status>
-                </div>
+                <ul className={styles.description}>
+                  <li>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+                  </li>
+                  <li>
+                    Diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam erat.
+                  </li>
+                  <li>Sed diam voluptua.</li>
+                </ul>
               </DSActionCard.Header>
               <DSActionCard.Footer className={styles.footer}>
-                <div className={styles.footerLeft}>
-                  <Price
-                    amount='11.199,00 €'
-                    discount={{
-                      previousAmount: '21.199,00 €',
-                      savingsAmount: '50,00 €',
-                      savingsPercentage: '14%',
-                    }}
-                  />
-                  <DSCheckbox label='Compare' />
-                </div>
-                <div>
-                  <DSButtonRound
-                    size='medium'
-                    aria={{ 'aria-label': 'Add to cart' }}
+                <Price
+                  amount='11.199,00 €'
+                  discount={{
+                    previousAmount: '21.199,00 €',
+                    savingsAmount: '50,00 €',
+                    savingsPercentage: '14%',
+                  }}
+                />
+                <Status className={styles.status} variant='positive'>
+                  Available
+                </Status>
+                <div className={styles.actions}>
+                  <DSButton
+                    size='small'
                     iconName='cart-plus'
+                    className={styles.cta}
                     variant='highlight'
                     onClick={() => console.log('Add to cart')}
+                    stretched={true}
                   >
-                    Shop
-                  </DSButtonRound>
+                    <span className={styles.ctaLabel}>Add to cart</span>
+                    <span className={styles.ctaLabelMobile}>Add</span>
+                  </DSButton>
+                  <DSButton
+                    hideLabel={true}
+                    size='small'
+                    variant='outline'
+                    iconName='heart'
+                    className={styles.favoriteButton}
+                  >
+                    Add to favorites
+                  </DSButton>
                 </div>
+                <DSCheckbox className={styles.compare} label='Compare' />
               </DSActionCard.Footer>
               <DSActionCard.Media className={styles.mediaWrapper}>
                 <img
@@ -280,33 +320,24 @@ const ProductCardGridPattern = (): JSX.Element => {
                     <BatteryIcon variant='ak' aria-label='AK-System' />
                   </li>
                 </ul>
-                <DSButton
-                  hideLabel={true}
-                  size='small'
-                  variant='ghost'
-                  iconName='heart'
-                  className={styles.favoriteButton}
-                >
-                  Add to favorites
-                </DSButton>
-
-                <DSFlag className={styles.promo} color='orange-base'>
-                  New
-                </DSFlag>
               </DSActionCard.Media>
             </DSActionCard>
           </li>
 
-          <li>
+          <li className={styles.listItem}>
             <DSActionCard
+              orientation='horizontal'
               aria={{ 'aria-labelledby': 'product-card-4' }}
-              className={styles.cardItem}
+              className={styles.productCard}
               classNameContentWrapper={styles.cardContent}
             >
               <DSActionCard.PrimaryAction href='#' target='_self'>
                 Go to product details
               </DSActionCard.PrimaryAction>
-              <DSActionCard.Header>
+              <DSActionCard.Header className={styles.header}>
+                <DSFlag className={styles.promo} color='promo-neutral'>
+                  New
+                </DSFlag>
                 <DSHeading
                   className={styles.cardHeading}
                   id='product-card-4'
@@ -322,36 +353,55 @@ const ProductCardGridPattern = (): JSX.Element => {
                   count={87}
                 />
                 <div className={styles.category}>Chainsaws</div>
-                <div className={styles.description}>
-                  Short description of the product
+                <div className={styles.descriptionMobile}>
+                  Lorem ipsum · Quam · Adipiscing ultricies
                 </div>
-                <div className={styles.availability}>
-                  <Status variant='neutral'>In stock within 2-3 weeks</Status>
-                </div>
+                <ul className={styles.description}>
+                  <li>Lorem ipsum dolor sit amet consectetur.</li>
+                  <li>
+                    Quam pretium diam consequat pretium purus senectus et orci
+                    eu.
+                  </li>
+                  <li>
+                    Adipiscing ultricies neque sed proin aliquet dictum in.
+                  </li>
+                </ul>
               </DSActionCard.Header>
               <DSActionCard.Footer className={styles.footer}>
-                <div className={styles.footerLeft}>
-                  <Price
-                    amount='5.499,00 €'
-                    discount={{
-                      previousAmount: '6.299,00 €',
-                      savingsAmount: '800,00 €',
-                      savingsPercentage: '12%',
-                    }}
-                  />
-                  <DSCheckbox label='Compare' />
-                </div>
-                <div>
-                  <DSButtonRound
-                    size='medium'
-                    aria={{ 'aria-label': 'Add to cart' }}
+                <Price
+                  amount='5.499,00 €'
+                  discount={{
+                    previousAmount: '6.299,00 €',
+                    savingsAmount: '800,00 €',
+                    savingsPercentage: '12%',
+                  }}
+                />
+                <Status className={styles.status} variant='neutral'>
+                  In stock within 2-3 weeks
+                </Status>
+                <div className={styles.actions}>
+                  <DSButton
+                    size='small'
                     iconName='cart-plus'
+                    className={styles.cta}
                     variant='highlight'
                     onClick={() => console.log('Add to cart')}
+                    stretched={true}
                   >
-                    Shop
-                  </DSButtonRound>
+                    <span className={styles.ctaLabel}>Add to cart</span>
+                    <span className={styles.ctaLabelMobile}>Add</span>
+                  </DSButton>
+                  <DSButton
+                    hideLabel={true}
+                    size='small'
+                    variant='outline'
+                    iconName='heart'
+                    className={styles.favoriteButton}
+                  >
+                    Add to favorites
+                  </DSButton>
                 </div>
+                <DSCheckbox className={styles.compare} label='Compare' />
               </DSActionCard.Footer>
               <DSActionCard.Media className={styles.mediaWrapper}>
                 <img
@@ -369,33 +419,24 @@ const ProductCardGridPattern = (): JSX.Element => {
                     <BatteryIcon variant='as' aria-label='AS-System' />
                   </li>
                 </ul>
-                <DSButton
-                  hideLabel={true}
-                  size='small'
-                  variant='ghost'
-                  iconName='heart'
-                  className={styles.favoriteButton}
-                >
-                  Add to favorites
-                </DSButton>
-
-                <DSFlag className={styles.promo} color='orange-base'>
-                  New
-                </DSFlag>
               </DSActionCard.Media>
             </DSActionCard>
           </li>
 
-          <li>
+          <li className={styles.listItem}>
             <DSActionCard
+              orientation='horizontal'
               aria={{ 'aria-labelledby': 'product-card-5' }}
-              className={styles.cardItem}
+              className={styles.productCard}
               classNameContentWrapper={styles.cardContent}
             >
               <DSActionCard.PrimaryAction href='#' target='_self'>
                 Go to product details
               </DSActionCard.PrimaryAction>
-              <DSActionCard.Header>
+              <DSActionCard.Header className={styles.header}>
+                <DSFlag className={styles.promo} color='promo-neutral'>
+                  New
+                </DSFlag>
                 <DSHeading
                   className={styles.cardHeading}
                   id='product-card-5'
@@ -411,71 +452,80 @@ const ProductCardGridPattern = (): JSX.Element => {
                   count={154}
                 />
                 <div className={styles.category}>Merchandise</div>
-                <div className={styles.description}>
-                  Short description of the product
+                <div className={styles.descriptionMobile}>
+                  Lorem ipsum · Quam · Adipiscing ultricies
                 </div>
-                <div className={styles.availability}>
-                  <Status variant='neutral'>In stock within 2-3 weeks</Status>
-                </div>
+                <ul className={styles.description}>
+                  <li>Lorem ipsum dolor sit amet consectetur.</li>
+                  <li>
+                    Quam pretium diam consequat pretium purus senectus et orci
+                    eu.
+                  </li>
+                  <li>
+                    Adipiscing ultricies neque sed proin aliquet dictum in.
+                  </li>
+                </ul>
               </DSActionCard.Header>
               <DSActionCard.Footer className={styles.footer}>
-                <div className={styles.footerLeft}>
-                  <Price
-                    amount='5.499,00 €'
-                    label='Set price'
-                    discount={{
-                      previousAmount: '6.299,00 €',
-                      savingsAmount: '800,00 €',
-                      savingsPercentage: '12%',
-                    }}
-                  />
-                  <DSCheckbox label='Compare' />
-                </div>
-                <div>
-                  <DSButtonRound
-                    size='medium'
-                    aria={{ 'aria-label': 'Add to cart' }}
+                <Price
+                  amount='5.499,00 €'
+                  label='Set price'
+                  discount={{
+                    previousAmount: '6.299,00 €',
+                    savingsAmount: '800,00 €',
+                    savingsPercentage: '12%',
+                  }}
+                />
+                <Status className={styles.status} variant='neutral'>
+                  In stock within 2-3 weeks
+                </Status>
+                <div className={styles.actions}>
+                  <DSButton
+                    size='small'
                     iconName='cart-plus'
+                    className={styles.cta}
                     variant='highlight'
                     onClick={() => console.log('Add to cart')}
+                    stretched={true}
                   >
-                    Shop
-                  </DSButtonRound>
+                    <span className={styles.ctaLabel}>Add to cart</span>
+                    <span className={styles.ctaLabelMobile}>Add</span>
+                  </DSButton>
+                  <DSButton
+                    hideLabel={true}
+                    size='small'
+                    variant='outline'
+                    iconName='heart'
+                    className={styles.favoriteButton}
+                  >
+                    Add to favorites
+                  </DSButton>
                 </div>
+                <DSCheckbox className={styles.compare} label='Compare' />
               </DSActionCard.Footer>
               <DSActionCard.Media className={styles.mediaWrapper}>
                 <img
                   src='/product-card-example-5.webp'
                   alt='Alt text of the product image'
                 />
-
-                <DSButton
-                  hideLabel={true}
-                  size='small'
-                  variant='ghost'
-                  iconName='heart'
-                  className={styles.favoriteButton}
-                >
-                  Add to favorites
-                </DSButton>
-
-                <DSFlag className={styles.promo} color='orange-base'>
-                  New
-                </DSFlag>
               </DSActionCard.Media>
             </DSActionCard>
           </li>
 
-          <li>
+          <li className={styles.listItem}>
             <DSActionCard
+              orientation='horizontal'
               aria={{ 'aria-labelledby': 'product-card-6' }}
-              className={styles.cardItem}
+              className={styles.productCard}
               classNameContentWrapper={styles.cardContent}
             >
               <DSActionCard.PrimaryAction href='#' target='_self'>
                 Go to product details
               </DSActionCard.PrimaryAction>
-              <DSActionCard.Header>
+              <DSActionCard.Header className={styles.header}>
+                <DSFlag className={styles.promo} color='promo-neutral'>
+                  New
+                </DSFlag>
                 <DSHeading
                   className={styles.cardHeading}
                   id='product-card-6'
@@ -491,69 +541,79 @@ const ProductCardGridPattern = (): JSX.Element => {
                   count={73}
                 />
                 <div className={styles.category}>Riding Lawn Mowers</div>
-                <div className={styles.description}>
-                  Short description of the product
+                <div className={styles.descriptionMobile}>
+                  Lorem ipsum · Quam · Adipiscing ultricies
                 </div>
-                <div className={styles.availability}>
-                  <Status variant='neutral'>In stock within 2-3 weeks</Status>
-                </div>
+                <ul className={styles.description}>
+                  <li>Lorem ipsum dolor sit amet consectetur.</li>
+                  <li>
+                    Quam pretium diam consequat pretium purus senectus et orci
+                    eu.
+                  </li>
+                  <li>
+                    Adipiscing ultricies neque sed proin aliquet dictum in.
+                  </li>
+                </ul>
               </DSActionCard.Header>
               <DSActionCard.Footer className={styles.footer}>
-                <div className={styles.footerLeft}>
-                  <Price
-                    amount='5.499,00 €'
-                    discount={{
-                      previousAmount: '6.299,00 €',
-                      savingsAmount: '800,00 €',
-                      savingsPercentage: '12%',
-                    }}
-                  />
-                  <DSCheckbox label='Compare' />
-                </div>
-                <div>
-                  <DSButtonRound
-                    size='medium'
-                    aria={{ 'aria-label': 'Add to cart' }}
+                <Price
+                  amount='5.499,00 €'
+                  discount={{
+                    previousAmount: '6.299,00 €',
+                    savingsAmount: '800,00 €',
+                    savingsPercentage: '12%',
+                  }}
+                />
+                <Status className={styles.status} variant='neutral'>
+                  In stock within 2-3 weeks
+                </Status>
+                <div className={styles.actions}>
+                  <DSButton
+                    size='small'
                     iconName='cart-plus'
+                    className={styles.cta}
                     variant='highlight'
                     onClick={() => console.log('Add to cart')}
+                    stretched={true}
                   >
-                    Shop
-                  </DSButtonRound>
+                    <span className={styles.ctaLabel}>Add to cart</span>
+                    <span className={styles.ctaLabelMobile}>Add</span>
+                  </DSButton>
+                  <DSButton
+                    hideLabel={true}
+                    size='small'
+                    variant='outline'
+                    iconName='heart'
+                    className={styles.favoriteButton}
+                  >
+                    Add to favorites
+                  </DSButton>
                 </div>
+                <DSCheckbox className={styles.compare} label='Compare' />
               </DSActionCard.Footer>
               <DSActionCard.Media className={styles.mediaWrapper}>
                 <img
                   src='/product-card-example-6.webp'
                   alt='Alt text of the product image'
                 />
-                <DSButton
-                  hideLabel={true}
-                  size='small'
-                  variant='ghost'
-                  iconName='heart'
-                  className={styles.favoriteButton}
-                >
-                  Add to favorites
-                </DSButton>
-
-                <DSFlag className={styles.promo} color='orange-base'>
-                  New
-                </DSFlag>
               </DSActionCard.Media>
             </DSActionCard>
           </li>
 
-          <li>
+          <li className={styles.listItem}>
             <DSActionCard
+              orientation='horizontal'
               aria={{ 'aria-labelledby': 'product-card-7' }}
-              className={styles.cardItem}
+              className={styles.productCard}
               classNameContentWrapper={styles.cardContent}
             >
               <DSActionCard.PrimaryAction href='#' target='_self'>
                 Go to product details
               </DSActionCard.PrimaryAction>
-              <DSActionCard.Header>
+              <DSActionCard.Header className={styles.header}>
+                <DSFlag className={styles.promo} color='promo-neutral'>
+                  New
+                </DSFlag>
                 <DSHeading
                   className={styles.cardHeading}
                   id='product-card-7'
@@ -569,36 +629,55 @@ const ProductCardGridPattern = (): JSX.Element => {
                   count={98}
                 />
                 <div className={styles.category}>Pole pruner</div>
-                <div className={styles.description}>
-                  Short description of the product
+                <div className={styles.descriptionMobile}>
+                  Lorem ipsum · Quam · Adipiscing ultricies
                 </div>
-                <div className={styles.availability}>
-                  <Status variant='neutral'>In stock within 2-3 weeks</Status>
-                </div>
+                <ul className={styles.description}>
+                  <li>Lorem ipsum dolor sit amet consectetur.</li>
+                  <li>
+                    Quam pretium diam consequat pretium purus senectus et orci
+                    eu.
+                  </li>
+                  <li>
+                    Adipiscing ultricies neque sed proin aliquet dictum in.
+                  </li>
+                </ul>
               </DSActionCard.Header>
               <DSActionCard.Footer className={styles.footer}>
-                <div className={styles.footerLeft}>
-                  <Price
-                    amount='5.499,00 €'
-                    discount={{
-                      previousAmount: '6.299,00 €',
-                      savingsAmount: '800,00 €',
-                      savingsPercentage: '12%',
-                    }}
-                  />
-                  <DSCheckbox label='Compare' />
-                </div>
-                <div>
-                  <DSButtonRound
-                    size='medium'
-                    aria={{ 'aria-label': 'Add to cart' }}
+                <Price
+                  amount='5.499,00 €'
+                  discount={{
+                    previousAmount: '6.299,00 €',
+                    savingsAmount: '800,00 €',
+                    savingsPercentage: '12%',
+                  }}
+                />
+                <Status className={styles.status} variant='neutral'>
+                  In stock within 2-3 weeks
+                </Status>
+                <div className={styles.actions}>
+                  <DSButton
+                    size='small'
                     iconName='cart-plus'
+                    className={styles.cta}
                     variant='highlight'
                     onClick={() => console.log('Add to cart')}
+                    stretched={true}
                   >
-                    Shop
-                  </DSButtonRound>
+                    <span className={styles.ctaLabel}>Add to cart</span>
+                    <span className={styles.ctaLabelMobile}>Add</span>
+                  </DSButton>
+                  <DSButton
+                    hideLabel={true}
+                    size='small'
+                    variant='outline'
+                    iconName='heart'
+                    className={styles.favoriteButton}
+                  >
+                    Add to favorites
+                  </DSButton>
                 </div>
+                <DSCheckbox className={styles.compare} label='Compare' />
               </DSActionCard.Footer>
               <DSActionCard.Media className={styles.mediaWrapper}>
                 <img
@@ -616,19 +695,6 @@ const ProductCardGridPattern = (): JSX.Element => {
                     <BatteryIcon variant='as' aria-label='AS-System' />
                   </li>
                 </ul>
-                <DSButton
-                  hideLabel={true}
-                  size='small'
-                  variant='ghost'
-                  iconName='heart'
-                  className={styles.favoriteButton}
-                >
-                  Add to favorites
-                </DSButton>
-
-                <DSFlag className={styles.promo} color='orange-base'>
-                  New
-                </DSFlag>
               </DSActionCard.Media>
             </DSActionCard>
           </li>
@@ -640,7 +706,7 @@ const ProductCardGridPattern = (): JSX.Element => {
 
 // Added: Route export for patterns navigation
 export const Route = createFileRoute(
-  '/patterns/Cards/ProductCardGrid/ProductCardGrid'
+  '/patterns/Cards/ProductCard/ProductCardList'
 )({
-  component: ProductCardGridPattern,
+  component: ProductCardListPattern,
 });

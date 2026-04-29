@@ -9,7 +9,7 @@ import { useState } from 'react';
 import styles from './AppSwitch.module.scss';
 
 export const AppSwitch = ({
-  popoverOpenOnInit,
+  popoverOpenOnInit = false,
 }: {
   popoverOpenOnInit?: boolean;
 }) => {

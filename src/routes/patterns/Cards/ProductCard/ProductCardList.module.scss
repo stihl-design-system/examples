@@ -1,0 +1,236 @@
+@use '@stihl-design-system/components/styles/scss/ds';
+
+// Initialize the STIHL Design System grid
+.page {
+  padding-block: ds.$spacing-48;
+  @include ds.grid;
+}
+
+// Use the main grid column for the content
+.row {
+  @include ds.grid-main-column;
+}
+
+// Use the main grid column for the page heading
+.heading {
+  @include ds.grid-main-column;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: ds.$spacing-24;
+  // Remove default list styles
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+// =========================================
+// Product card styles to align with the design system and the provided design.
+// See: https://www.figma.com/design/qXldpLO6gxHJNLdcXIPxYt/Core-Components-%F0%9F%92%A0?node-id=50728-9936&t=PDfCIu5JFH6Ek7Lb-11
+// =========================================
+
+// Nest everything in .product-card to avoid specificity issues with the action card default styles.
+.product-card {
+  // Define container for card orientation queries. This should always be done to the
+  // wrapping element of the card. In grids this is usually the <li> element.
+  container-type: inline-size;
+  container-name: card-orientation;
+
+  // Max-width for product card list view defined by design.
+  max-width: 74.5rem; // 1192px
+
+  .card-content {
+    padding: ds.$spacing-12;
+    gap: ds.$spacing-8;
+  }
+
+  // === MEDIA SLOT ===
+  .media-wrapper {
+    position: relative;
+    padding-block-start: ds.$spacing-24;
+    padding-block-end: ds.$spacing-8;
+    padding-inline: ds.$spacing-8;
+    aspect-ratio: 4 / 3;
+    max-width: ds.$spacing-128;
+
+    img {
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  .battery-info {
+    position: absolute;
+    inset-block-start: ds.$spacing-8;
+    inset-inline-start: ds.$spacing-8;
+    display: inline-flex;
+    gap: ds.$spacing-6;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+
+  // === HEADER SLOT ===
+  .header {
+    padding-block: ds.$spacing-6;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: ds.$spacing-4;
+  }
+
+  .card-heading {
+    // Just a fix for Storybook
+    margin-block-start: ds.$spacing-0;
+
+    // Limit description text to 3 lines with ellipsis
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .category {
+    @include ds.text-x-small;
+  }
+
+  // Hide full description on smaller screens to save space, as defined by design. Show a shorter description instead.
+  .description {
+    display: none;
+  }
+
+  .description-mobile {
+    @include ds.text-small;
+    display: block;
+  }
+
+  // === FOOTER SLOT ===
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: fit-content;
+    max-width: 14rem; // 224px
+    gap: ds.$spacing-8;
+    padding-block-end: ds.$spacing-2;
+  }
+
+  .actions {
+    display: flex;
+    gap: ds.$spacing-8;
+  }
+
+  .cta {
+    flex-grow: 0;
+  }
+
+  // Hide the "Add to cart" label on smaller screens to save space, as defined by design. Show a shorter label instead.
+  .cta-label {
+    display: none;
+  }
+
+  .cta-label-mobile {
+    display: inline;
+  }
+
+  // Hide the compare checkbox on smaller screens to save space, as defined by design. Show it only on larger screens.
+  .compare {
+    display: none;
+    margin-block-start: auto;
+  }
+}
+
+@container card-orientation (width > 419px) {
+  .product-card {
+    // === MEDIA SLOT ===
+    .media-wrapper {
+      max-width: 11.25rem; // 180px
+      position: relative;
+      padding-inline: ds.$spacing-12;
+    }
+
+    .battery-info {
+      inset-block-start: ds.$spacing-12;
+      inset-inline-start: ds.$spacing-16;
+    }
+
+    // === FOOTER SLOT ===
+    .cta-label {
+      display: inline;
+    }
+    .cta-label-mobile {
+      display: none;
+    }
+  }
+}
+
+@container card-orientation (width > 540px) {
+  .product-card {
+    // === MEDIA SLOT ===
+    .media-wrapper {
+      padding-block-start: ds.$spacing-32;
+      padding-inline: ds.$spacing-16;
+      max-width: 15rem; // 240px
+    }
+
+    .battery-info {
+      inset-block-start: ds.$spacing-16;
+    }
+  }
+}
+
+@container card-orientation (width > 766px) {
+  .product-card {
+    // Product Card content should switch to horizontal layout at 766px, as defined by design.
+    .card-content {
+      flex-direction: row;
+      padding: ds.$spacing-24;
+      gap: ds.$spacing-40;
+    }
+
+    // === HEADER SLOT ===
+    .header {
+      padding-block: ds.$spacing-8;
+      gap: ds.$spacing-8;
+    }
+
+    .description-mobile {
+      display: none;
+    }
+
+    .description {
+      display: block;
+      margin-block-start: ds.$spacing-8;
+      padding: 0;
+      padding-inline-start: ds.$spacing-6;
+      list-style-type: '•';
+
+      @include ds.text-small;
+
+      li {
+        padding-left: ds.$spacing-8;
+
+        &::marker {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    // === FOOTER SLOT ===
+    .footer {
+      margin-block-start: ds.$spacing-0;
+      margin-inline-start: auto;
+      min-width: 14rem; // 224px
+      max-width: 14rem; // 224px
+      gap: ds.$spacing-16;
+      padding-block-end: ds.$spacing-4;
+    }
+
+    // Show compare checkbox only on larger screens, as defined by design.
+    .compare {
+      display: block;
+    }
+  }
+}

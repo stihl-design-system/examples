@@ -8,6 +8,7 @@
   display: inline-flex;
   align-items: center;
   gap: ds.$spacing-8;
+  flex-wrap: wrap;
 
   @include ds.text-small;
 }

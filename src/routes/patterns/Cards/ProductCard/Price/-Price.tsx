@@ -45,6 +45,9 @@ export const Price = ({
   ...rest
 }: PriceProps): JSX.Element => {
   const rootClass = classNames(styles.root, className);
+  const amountClass = classNames(styles.amount, {
+    [styles.amountDiscount]: typeof discount !== 'undefined',
+  });
 
   return (
     <div {...rest} className={rootClass}>
@@ -54,7 +57,7 @@ export const Price = ({
         </DSTextUtility>
       )}
       <div className={styles.primaryRow}>
-        <span className={styles.amount}>{amount}</span>
+        <span className={amountClass}>{amount}</span>
         <span className={styles.vat}>{vatLabel}</span>
       </div>
 

@@ -5,12 +5,27 @@ import {
   DSLink,
   DSPopover,
 } from '@stihl-design-system/components';
+import { useState } from 'react';
 import styles from './Account.module.scss';
 
-export const Account = () => {
+export const Account = ({
+  popoverOpenOnInit = false,
+}: {
+  popoverOpenOnInit?: boolean;
+}) => {
+  const [isAccountPopoverOpen, setIsAccountPopoverOpen] =
+    useState(popoverOpenOnInit);
+
   return (
-    <DSPopover placement='bottom-end' showArrow={false}>
-      <DSPopover.Anchor>
+    <DSPopover
+      placement='bottom-end'
+      showArrow={false}
+      isOpen={isAccountPopoverOpen}
+      onOpenChange={setIsAccountPopoverOpen}
+    >
+      <DSPopover.Anchor
+        onClick={() => setIsAccountPopoverOpen(!isAccountPopoverOpen)}
+      >
         <DSActionButton
           // It's important to use a descriptive aria-label here, since the button contains a visual element only instead of a text label.
           aria-label='Toggle account menu'
