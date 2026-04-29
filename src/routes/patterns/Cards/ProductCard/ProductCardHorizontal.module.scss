@@ -1,0 +1,136 @@
+@use '@stihl-design-system/components/styles/scss/ds';
+
+// Initialize the STIHL Design System grid
+.page {
+  padding-block: ds.$spacing-48;
+  @include ds.grid;
+}
+
+// Use the main grid column for the content
+.row {
+  @include ds.grid-main-column;
+}
+
+// Use the main grid column for the page heading
+.heading {
+  @include ds.grid-main-column;
+}
+
+.card-container {
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: ds.$spacing-24;
+  // Remove default list styles
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card-item {
+  // Make sure each card takes the full height of the grid item
+  height: 100%;
+
+  // Define container for card orientation queries. This should always be done to the
+  // wrapping element of the card. In grids this is usually the <li> element.
+  container-type: inline-size;
+  container-name: card-orientation;
+}
+
+// =========================================
+// Product card styles to align with the design system and the provided design.
+// See: https://www.figma.com/design/qXldpLO6gxHJNLdcXIPxYt/Core-Components-%F0%9F%92%A0?node-id=50728-9936&t=PDfCIu5JFH6Ek7Lb-11
+// =========================================
+
+// MEDIA SLOT
+.media-wrapper {
+  position: relative;
+  padding-block-start: ds.$spacing-32;
+  padding-block-end: ds.$spacing-8;
+  padding-inline: ds.$spacing-16;
+  aspect-ratio: 4 / 3;
+
+  img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.battery-info {
+  position: absolute;
+  inset-block-start: ds.$spacing-16;
+  inset-inline-start: ds.$spacing-16;
+  display: inline-flex;
+  gap: ds.$spacing-6;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.favorite-button {
+  position: absolute;
+  inset-block-start: ds.$spacing-12;
+  inset-inline-end: ds.$spacing-12;
+}
+
+// HEADER SLOT
+.card-heading {
+  margin-block: ds.$spacing-8;
+
+  // Limit description text to 3 lines with ellipsis
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.rating {
+  margin-block-end: ds.$spacing-8;
+}
+
+.category {
+  margin-block-end: ds.$spacing-16;
+  @include ds.text-x-small;
+}
+
+.description {
+  margin-block-end: ds.$spacing-16;
+
+  // Limit description text to 3 lines with ellipsis
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+  @include ds.text-small;
+}
+
+// Footer slot
+.footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: ds.$spacing-24;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: ds.$spacing-24;
+}
+
+@container card-orientation (width > 928px) {
+  .card-content {
+    flex-direction: row;
+  }
+
+  .footer {
+    align-items: flex-start;
+    margin-block-start: ds.$spacing-0;
+    flex-direction: column;
+    margin-inline-start: auto;
+  }
+}
