@@ -27,7 +27,7 @@ const ActionCardResponsivePattern = (): JSX.Element => {
                 </DSFlag>
               </li>
               <li>
-                <DSFlag color='grey-light'>Price on request</DSFlag>
+                <DSFlag color='status-info'>Price on request</DSFlag>
               </li>
             </ul>
             <DSHeading

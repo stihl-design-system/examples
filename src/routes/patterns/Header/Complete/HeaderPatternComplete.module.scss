@@ -24,11 +24,11 @@
 
   input {
     // make input type search round
-    border-radius: 1.5rem;
+    border-radius: ds.$radius-full;
   }
   // adjust input type search button to be round
   button {
-    border-radius: 1.5rem;
+    border-radius: ds.$radius-full;
   }
 }
 

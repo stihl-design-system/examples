@@ -120,7 +120,7 @@ const ProductCardGridPattern = (): JSX.Element => {
                   Add to favorites
                 </DSButton>
 
-                <DSFlag className={styles.promo} color='orange-base'>
+                <DSFlag className={styles.promo} color='promo-highlight'>
                   New
                 </DSFlag>
               </DSActionCard.Media>
@@ -203,7 +203,7 @@ const ProductCardGridPattern = (): JSX.Element => {
                   Add to favorites
                 </DSButton>
 
-                <DSFlag className={styles.promo} color='orange-base'>
+                <DSFlag className={styles.promo} color='promo-highlight'>
                   New
                 </DSFlag>
               </DSActionCard.Media>
@@ -293,7 +293,7 @@ const ProductCardGridPattern = (): JSX.Element => {
                   Add to favorites
                 </DSButton>
 
-                <DSFlag className={styles.promo} color='orange-base'>
+                <DSFlag className={styles.promo} color='promo-highlight'>
                   New
                 </DSFlag>
               </DSActionCard.Media>
@@ -383,7 +383,7 @@ const ProductCardGridPattern = (): JSX.Element => {
                   Add to favorites
                 </DSButton>
 
-                <DSFlag className={styles.promo} color='orange-base'>
+                <DSFlag className={styles.promo} color='promo-highlight'>
                   New
                 </DSFlag>
               </DSActionCard.Media>
@@ -464,7 +464,7 @@ const ProductCardGridPattern = (): JSX.Element => {
                   Add to favorites
                 </DSButton>
 
-                <DSFlag className={styles.promo} color='orange-base'>
+                <DSFlag className={styles.promo} color='promo-highlight'>
                   New
                 </DSFlag>
               </DSActionCard.Media>
@@ -543,7 +543,7 @@ const ProductCardGridPattern = (): JSX.Element => {
                   Add to favorites
                 </DSButton>
 
-                <DSFlag className={styles.promo} color='orange-base'>
+                <DSFlag className={styles.promo} color='promo-highlight'>
                   New
                 </DSFlag>
               </DSActionCard.Media>
@@ -633,7 +633,7 @@ const ProductCardGridPattern = (): JSX.Element => {
                   Add to favorites
                 </DSButton>
 
-                <DSFlag className={styles.promo} color='orange-base'>
+                <DSFlag className={styles.promo} color='promo-highlight'>
                   New
                 </DSFlag>
               </DSActionCard.Media>

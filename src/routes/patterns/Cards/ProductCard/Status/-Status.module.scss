@@ -16,7 +16,7 @@
   display: inline-block;
   inline-size: 8px;
   block-size: 8px;
-  border-radius: 50%;
+  border-radius: ds.$radius-circle;
 }
 
 .indicator-tone-negative {

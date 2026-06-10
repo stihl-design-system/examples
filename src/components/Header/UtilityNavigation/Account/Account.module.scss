@@ -45,9 +45,9 @@
   color: ds.$color-core-grey-deep;
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 1.25rem;
+  border-radius: ds.$radius-circle;
   background-color: ds.$theme-light-background-color-secondary;
-  border: 1px solid ds.$theme-light-border-color-tertiary;
+  border: ds.$border-width-1 solid ds.$theme-light-border-color-tertiary;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,7 +78,7 @@
   .avatar {
     width: 3.75rem;
     height: 3.75rem;
-    border-radius: 1.875rem;
+    border-radius: ds.$radius-circle;
     letter-spacing: 0px;
     @include ds.heading-large-uppercase();
   }
