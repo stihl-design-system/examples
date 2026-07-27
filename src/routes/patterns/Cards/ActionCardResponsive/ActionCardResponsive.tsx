@@ -22,7 +22,7 @@ const ActionCardResponsivePattern = (): JSX.Element => {
           <DSActionCard.Header className={styles['card-header-slot']}>
             <ul className={styles['card-flags-list']} aria-label='Categories'>
               <li>
-                <DSFlag color='orange-base' iconName='wrench'>
+                <DSFlag color='promo-highlight' iconName='wrench'>
                   Our recommended service
                 </DSFlag>
               </li>

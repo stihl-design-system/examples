@@ -50,6 +50,9 @@ const ProductCardGridPattern = (): JSX.Element => {
                 Go to product details
               </DSActionCard.PrimaryAction>
               <DSActionCard.Header>
+                <DSFlag className={styles.promo} color='promo-neutral'>
+                  New
+                </DSFlag>
                 <DSHeading
                   className={styles.cardHeading}
                   // The id should be unique and descriptive to ensure it correctly references the card for screen readers
@@ -137,6 +140,9 @@ const ProductCardGridPattern = (): JSX.Element => {
                 Go to product details
               </DSActionCard.PrimaryAction>
               <DSActionCard.Header>
+                <DSFlag className={styles.promo} color='promo-neutral'>
+                  New
+                </DSFlag>
                 <DSHeading
                   className={styles.cardHeading}
                   id='product-card-2'
@@ -221,6 +227,9 @@ const ProductCardGridPattern = (): JSX.Element => {
                 Go to product details
               </DSActionCard.PrimaryAction>
               <DSActionCard.Header>
+                <DSFlag className={styles.promo} color='promo-neutral'>
+                  New
+                </DSFlag>
                 <DSHeading
                   className={styles.cardHeading}
                   id='product-card-3'
@@ -311,6 +320,9 @@ const ProductCardGridPattern = (): JSX.Element => {
                 Go to product details
               </DSActionCard.PrimaryAction>
               <DSActionCard.Header>
+                <DSFlag className={styles.promo} color='promo-neutral'>
+                  New
+                </DSFlag>
                 <DSHeading
                   className={styles.cardHeading}
                   id='product-card-4'
@@ -401,6 +413,9 @@ const ProductCardGridPattern = (): JSX.Element => {
                 Go to product details
               </DSActionCard.PrimaryAction>
               <DSActionCard.Header>
+                <DSFlag className={styles.promo} color='promo-neutral'>
+                  New
+                </DSFlag>
                 <DSHeading
                   className={styles.cardHeading}
                   id='product-card-5'
@@ -482,6 +497,9 @@ const ProductCardGridPattern = (): JSX.Element => {
                 Go to product details
               </DSActionCard.PrimaryAction>
               <DSActionCard.Header>
+                <DSFlag className={styles.promo} color='promo-neutral'>
+                  New
+                </DSFlag>
                 <DSHeading
                   className={styles.cardHeading}
                   id='product-card-6'
@@ -561,6 +579,9 @@ const ProductCardGridPattern = (): JSX.Element => {
                 Go to product details
               </DSActionCard.PrimaryAction>
               <DSActionCard.Header>
+                <DSFlag className={styles.promo} color='promo-neutral'>
+                  New
+                </DSFlag>
                 <DSHeading
                   className={styles.cardHeading}
                   id='product-card-7'
