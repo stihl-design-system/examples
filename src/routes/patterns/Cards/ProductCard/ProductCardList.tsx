@@ -1,6 +1,8 @@
 import {
   DSActionCard,
+  DSAriaLiveRegions,
   DSButton,
+  DSCarousel,
   DSCheckbox,
   DSFlag,
   DSHeading,
@@ -23,8 +25,15 @@ import { Status } from './Status/-Status';
  *
  */
 const ProductCardListPattern = (): JSX.Element => {
+  const commonCarouselProps = {
+    navigationControls: { position: 'inside', show: false },
+    scrollMarkerPosition: 'inside',
+    scrollMarkerVariant: 'inverse',
+  } as const;
+
   return (
     <div className={styles.page}>
+      <DSAriaLiveRegions />
       <DSHeading className={styles.heading} tag='h2' size='large'>
         Product Cards in List
       </DSHeading>
@@ -115,10 +124,25 @@ const ProductCardListPattern = (): JSX.Element => {
                 <DSCheckbox className={styles.compare} label='Compare' />
               </DSActionCard.Footer>
               <DSActionCard.Media className={styles.mediaWrapper}>
-                <img
-                  src='/product-card-example-1.webp'
-                  alt='Alt text of the product image'
-                />
+                <DSCarousel
+                  aria={{
+                    'aria-label': 'Product images for MS 261 C-M',
+                  }}
+                  {...commonCarouselProps}
+                >
+                  <img
+                    src='/product-card-example-1.webp'
+                    alt='MS 261 C-M product image 1'
+                  />
+                  <img
+                    src='/product-card-example-2.webp'
+                    alt='MS 261 C-M product image 2'
+                  />
+                  <img
+                    src='/product-card-example-3.webp'
+                    alt='MS 261 C-M product image 3'
+                  />
+                </DSCarousel>
                 {/* 
                   Since a product can have multiple battery options, we use a list to provide information about each battery type.
                   Make sure to use an appropriate aria-label for the list to describe its content for screen readers.
@@ -208,10 +232,23 @@ const ProductCardListPattern = (): JSX.Element => {
                 <DSCheckbox className={styles.compare} label='Compare' />
               </DSActionCard.Footer>
               <DSActionCard.Media className={styles.mediaWrapper}>
-                <img
-                  src='/product-card-example-2.webp'
-                  alt='Alt text of the product image'
-                />
+                <DSCarousel
+                  aria={{ 'aria-label': 'Product images for MS 172' }}
+                  {...commonCarouselProps}
+                >
+                  <img
+                    src='/product-card-example-2.webp'
+                    alt='MS 172 product image 1'
+                  />
+                  <img
+                    src='/product-card-example-3.webp'
+                    alt='MS 172 product image 2'
+                  />
+                  <img
+                    src='/product-card-example-4.webp'
+                    alt='MS 172 product image 3'
+                  />
+                </DSCarousel>
                 <ul
                   aria-label='Battery Information'
                   className={styles.batteryInfo}
@@ -308,10 +345,23 @@ const ProductCardListPattern = (): JSX.Element => {
                 <DSCheckbox className={styles.compare} label='Compare' />
               </DSActionCard.Footer>
               <DSActionCard.Media className={styles.mediaWrapper}>
-                <img
-                  src='/product-card-example-3.webp'
-                  alt='Alt text of the product image'
-                />
+                <DSCarousel
+                  aria={{ 'aria-label': 'Product images for MSA 80 C-B' }}
+                  {...commonCarouselProps}
+                >
+                  <img
+                    src='/product-card-example-3.webp'
+                    alt='MSA 80 C-B product image 1'
+                  />
+                  <img
+                    src='/product-card-example-4.webp'
+                    alt='MSA 80 C-B product image 2'
+                  />
+                  <img
+                    src='/product-card-example-5.webp'
+                    alt='MSA 80 C-B product image 3'
+                  />
+                </DSCarousel>
                 <ul
                   aria-label='Battery Information'
                   className={styles.batteryInfo}

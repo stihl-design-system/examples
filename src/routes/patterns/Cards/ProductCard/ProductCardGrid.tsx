@@ -1,7 +1,9 @@
 import {
   DSActionCard,
+  DSAriaLiveRegions,
   DSButton,
   DSButtonRound,
+  DSCarousel,
   DSCheckbox,
   DSFlag,
   DSHeading,
@@ -24,8 +26,15 @@ import { Status } from './Status/-Status';
  *
  */
 const ProductCardGridPattern = (): JSX.Element => {
+  const commonCarouselProps = {
+    navigationControls: { position: 'inside', show: false },
+    scrollMarkerPosition: 'inside',
+    scrollMarkerVariant: 'inverse',
+  } as const;
+
   return (
     <div className={styles.page}>
+      <DSAriaLiveRegions />
       <DSHeading className={styles.heading} tag='h2' size='large'>
         Product Cards in Grid
       </DSHeading>
@@ -97,10 +106,25 @@ const ProductCardGridPattern = (): JSX.Element => {
                 </div>
               </DSActionCard.Footer>
               <DSActionCard.Media className={styles.mediaWrapper}>
-                <img
-                  src='/product-card-example-1.webp'
-                  alt='Alt text of the product image'
-                />
+                <DSCarousel
+                  aria={{
+                    'aria-label': 'Product images for MS 261 C-M',
+                  }}
+                  {...commonCarouselProps}
+                >
+                  <img
+                    src='/product-card-example-1.webp'
+                    alt='MS 261 C-M product image 1'
+                  />
+                  <img
+                    src='/product-card-example-2.webp'
+                    alt='MS 261 C-M product image 2'
+                  />
+                  <img
+                    src='/product-card-example-3.webp'
+                    alt='MS 261 C-M product image 3'
+                  />
+                </DSCarousel>
                 {/* 
                   Since a product can have multiple battery options, we use a list to provide information about each battery type.
                   Make sure to use an appropriate aria-label for the list to describe its content for screen readers.
@@ -113,19 +137,16 @@ const ProductCardGridPattern = (): JSX.Element => {
                     <BatteryIcon variant='ak' aria-label='AK-System' />
                   </li>
                 </ul>
-                <DSButton
-                  hideLabel={true}
-                  size='small'
-                  variant='ghost'
-                  iconName='heart'
-                  className={styles.favoriteButton}
-                >
-                  Add to favorites
-                </DSButton>
-
-                <DSFlag className={styles.promo} color='promo-highlight'>
-                  New
-                </DSFlag>
+                <div className={styles.favoriteButton}>
+                  <DSButton
+                    hideLabel={true}
+                    size='small'
+                    variant='ghost'
+                    iconName='heart'
+                  >
+                    Add to favorites
+                  </DSButton>
+                </div>
               </DSActionCard.Media>
             </DSActionCard>
           </li>
@@ -184,10 +205,23 @@ const ProductCardGridPattern = (): JSX.Element => {
                 </div>
               </DSActionCard.Footer>
               <DSActionCard.Media className={styles.mediaWrapper}>
-                <img
-                  src='/product-card-example-2.webp'
-                  alt='Alt text of the product image'
-                />
+                <DSCarousel
+                  aria={{ 'aria-label': 'Product images for MS 172' }}
+                  {...commonCarouselProps}
+                >
+                  <img
+                    src='/product-card-example-2.webp'
+                    alt='MS 172 product image 1'
+                  />
+                  <img
+                    src='/product-card-example-3.webp'
+                    alt='MS 172 product image 2'
+                  />
+                  <img
+                    src='/product-card-example-4.webp'
+                    alt='MS 172 product image 3'
+                  />
+                </DSCarousel>
                 <ul
                   aria-label='Battery Information'
                   className={styles.batteryInfo}
@@ -199,19 +233,16 @@ const ProductCardGridPattern = (): JSX.Element => {
                     <BatteryIcon variant='as' aria-label='AS-System' />
                   </li>
                 </ul>
-                <DSButton
-                  hideLabel={true}
-                  size='small'
-                  variant='ghost'
-                  iconName='heart'
-                  className={styles.favoriteButton}
-                >
-                  Add to favorites
-                </DSButton>
-
-                <DSFlag className={styles.promo} color='promo-highlight'>
-                  New
-                </DSFlag>
+                <div className={styles.favoriteButton}>
+                  <DSButton
+                    hideLabel={true}
+                    size='small'
+                    variant='ghost'
+                    iconName='heart'
+                  >
+                    Add to favorites
+                  </DSButton>
+                </div>
               </DSActionCard.Media>
             </DSActionCard>
           </li>
@@ -280,10 +311,23 @@ const ProductCardGridPattern = (): JSX.Element => {
                 </div>
               </DSActionCard.Footer>
               <DSActionCard.Media className={styles.mediaWrapper}>
-                <img
-                  src='/product-card-example-3.webp'
-                  alt='Alt text of the product image'
-                />
+                <DSCarousel
+                  aria={{ 'aria-label': 'Product images for MSA 80 C-B' }}
+                  {...commonCarouselProps}
+                >
+                  <img
+                    src='/product-card-example-3.webp'
+                    alt='MSA 80 C-B product image 1'
+                  />
+                  <img
+                    src='/product-card-example-4.webp'
+                    alt='MSA 80 C-B product image 2'
+                  />
+                  <img
+                    src='/product-card-example-5.webp'
+                    alt='MSA 80 C-B product image 3'
+                  />
+                </DSCarousel>
                 <ul
                   aria-label='Battery Information'
                   className={styles.batteryInfo}
@@ -292,19 +336,16 @@ const ProductCardGridPattern = (): JSX.Element => {
                     <BatteryIcon variant='ak' aria-label='AK-System' />
                   </li>
                 </ul>
-                <DSButton
-                  hideLabel={true}
-                  size='small'
-                  variant='ghost'
-                  iconName='heart'
-                  className={styles.favoriteButton}
-                >
-                  Add to favorites
-                </DSButton>
-
-                <DSFlag className={styles.promo} color='promo-highlight'>
-                  New
-                </DSFlag>
+                <div className={styles.favoriteButton}>
+                  <DSButton
+                    hideLabel={true}
+                    size='small'
+                    variant='ghost'
+                    iconName='heart'
+                  >
+                    Add to favorites
+                  </DSButton>
+                </div>
               </DSActionCard.Media>
             </DSActionCard>
           </li>
@@ -385,19 +426,16 @@ const ProductCardGridPattern = (): JSX.Element => {
                     <BatteryIcon variant='as' aria-label='AS-System' />
                   </li>
                 </ul>
-                <DSButton
-                  hideLabel={true}
-                  size='small'
-                  variant='ghost'
-                  iconName='heart'
-                  className={styles.favoriteButton}
-                >
-                  Add to favorites
-                </DSButton>
-
-                <DSFlag className={styles.promo} color='promo-highlight'>
-                  New
-                </DSFlag>
+                <div className={styles.favoriteButton}>
+                  <DSButton
+                    hideLabel={true}
+                    size='small'
+                    variant='ghost'
+                    iconName='heart'
+                  >
+                    Add to favorites
+                  </DSButton>
+                </div>
               </DSActionCard.Media>
             </DSActionCard>
           </li>
@@ -469,19 +507,16 @@ const ProductCardGridPattern = (): JSX.Element => {
                   alt='Alt text of the product image'
                 />
 
-                <DSButton
-                  hideLabel={true}
-                  size='small'
-                  variant='ghost'
-                  iconName='heart'
-                  className={styles.favoriteButton}
-                >
-                  Add to favorites
-                </DSButton>
-
-                <DSFlag className={styles.promo} color='promo-highlight'>
-                  New
-                </DSFlag>
+                <div className={styles.favoriteButton}>
+                  <DSButton
+                    hideLabel={true}
+                    size='small'
+                    variant='ghost'
+                    iconName='heart'
+                  >
+                    Add to favorites
+                  </DSButton>
+                </div>
               </DSActionCard.Media>
             </DSActionCard>
           </li>
@@ -551,19 +586,16 @@ const ProductCardGridPattern = (): JSX.Element => {
                   src='/product-card-example-6.webp'
                   alt='Alt text of the product image'
                 />
-                <DSButton
-                  hideLabel={true}
-                  size='small'
-                  variant='ghost'
-                  iconName='heart'
-                  className={styles.favoriteButton}
-                >
-                  Add to favorites
-                </DSButton>
-
-                <DSFlag className={styles.promo} color='promo-highlight'>
-                  New
-                </DSFlag>
+                <div className={styles.favoriteButton}>
+                  <DSButton
+                    hideLabel={true}
+                    size='small'
+                    variant='ghost'
+                    iconName='heart'
+                  >
+                    Add to favorites
+                  </DSButton>
+                </div>
               </DSActionCard.Media>
             </DSActionCard>
           </li>
@@ -644,19 +676,16 @@ const ProductCardGridPattern = (): JSX.Element => {
                     <BatteryIcon variant='as' aria-label='AS-System' />
                   </li>
                 </ul>
-                <DSButton
-                  hideLabel={true}
-                  size='small'
-                  variant='ghost'
-                  iconName='heart'
-                  className={styles.favoriteButton}
-                >
-                  Add to favorites
-                </DSButton>
-
-                <DSFlag className={styles.promo} color='promo-highlight'>
-                  New
-                </DSFlag>
+                <div className={styles.favoriteButton}>
+                  <DSButton
+                    hideLabel={true}
+                    size='small'
+                    variant='ghost'
+                    iconName='heart'
+                  >
+                    Add to favorites
+                  </DSButton>
+                </div>
               </DSActionCard.Media>
             </DSActionCard>
           </li>

@@ -39,19 +39,19 @@
   container-name: card-orientation;
 
   // Max-width for product card list view defined by design.
-  max-width: 74.5rem; // 1192px
+  max-width: 89.6875rem; // 1435px
 
   .card-content {
-    padding: ds.$spacing-12;
+    padding-block: ds.$spacing-12;
+    padding-inline-start: ds.$spacing-8;
+    padding-inline-end: ds.$spacing-12;
     gap: ds.$spacing-8;
   }
 
   // === MEDIA SLOT ===
   .media-wrapper {
     position: relative;
-    padding-block-start: ds.$spacing-24;
-    padding-block-end: ds.$spacing-8;
-    padding-inline: ds.$spacing-8;
+    padding: ds.$spacing-8;
     aspect-ratio: 4 / 3;
     max-width: ds.$spacing-128;
 
@@ -66,14 +66,20 @@
     inset-inline-start: ds.$spacing-8;
     display: inline-flex;
     gap: ds.$spacing-6;
-    padding: 0;
+    padding-block: ds.$spacing-6;
+    padding-inline-start: ds.$spacing-0;
+    padding-inline-end: ds.$spacing-6;
+    background-color: ds.$theme-light-background-color-primary;
     margin: 0;
     list-style-type: none;
+
+    li {
+      display: flex;
+    }
   }
 
   // === HEADER SLOT ===
   .header {
-    padding-block: ds.$spacing-6;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -114,7 +120,6 @@
     min-width: fit-content;
     max-width: 14rem; // 224px
     gap: ds.$spacing-8;
-    padding-block-end: ds.$spacing-2;
   }
 
   .actions {
@@ -148,7 +153,14 @@
     .media-wrapper {
       max-width: 11.25rem; // 180px
       position: relative;
-      padding-inline: ds.$spacing-12;
+      padding: ds.$spacing-12;
+    }
+
+    .card-content {
+      padding-block: ds.$spacing-16;
+      padding-inline-start: ds.$spacing-12;
+      padding-inline-end: ds.$spacing-16;
+      gap: ds.$spacing-8;
     }
 
     .battery-info {
@@ -170,8 +182,7 @@
   .product-card {
     // === MEDIA SLOT ===
     .media-wrapper {
-      padding-block-start: ds.$spacing-32;
-      padding-inline: ds.$spacing-16;
+      padding: ds.$spacing-16;
       max-width: 15rem; // 240px
     }
 
@@ -186,13 +197,14 @@
     // Product Card content should switch to horizontal layout at 766px, as defined by design.
     .card-content {
       flex-direction: row;
-      padding: ds.$spacing-24;
+      padding-block: ds.$spacing-24;
+      padding-inline-start: ds.$spacing-16;
+      padding-inline-end: ds.$spacing-24;
       gap: ds.$spacing-40;
     }
 
     // === HEADER SLOT ===
     .header {
-      padding-block: ds.$spacing-8;
       gap: ds.$spacing-8;
     }
 
@@ -225,7 +237,6 @@
       min-width: 14rem; // 224px
       max-width: 14rem; // 224px
       gap: ds.$spacing-16;
-      padding-block-end: ds.$spacing-4;
     }
 
     // Show compare checkbox only on larger screens, as defined by design.
