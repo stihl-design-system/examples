@@ -1,0 +1,67 @@
+@use '@stihl-design-system/components/styles/scss/ds';
+
+.page {
+  // Initialize the STIHL Design System grid
+  @include ds.grid;
+  & {
+    // Vertical rhythm between the heading/carousel blocks
+    row-gap: ds.$spacing-32;
+    // Padding above and below the page content
+    padding-block: ds.$spacing-48;
+  }
+}
+
+// Make each link card fill its item height
+.card {
+  height: 100%;
+}
+
+// Placeholder item for the carousel template
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: ds.$theme-light-background-color-feedback-info;
+  border: 1px solid ds.$theme-light-border-color-tertiary;
+  block-size: ds.$spacing-160-rem;
+  inline-size: 100%;
+}
+
+// Headings sit in the main grid area
+.heading {
+  @include ds.grid-main-column;
+}
+
+.list {
+  @include ds.grid-main-column;
+  margin: 0;
+  padding-inline-start: ds.$spacing-24;
+}
+
+// Quarter grid items: halves at < M, quarters at >= L
+.first-quarter-item {
+  @include ds.grid-first-quarter;
+}
+
+.quarter-item {
+  @include ds.grid-span-one-quarter;
+}
+
+.third-quarter-item {
+  @include ds.grid-span-one-quarter(true);
+}
+
+.first-half-item {
+  @include ds.grid-first-quarter;
+  @include ds.media-query-min('m') {
+    @include ds.grid-first-half;
+  }
+}
+
+.second-half-item {
+  @include ds.grid-span-one-quarter;
+  @include ds.media-query-min('m') {
+    @include ds.grid-span-one-half;
+  }
+}

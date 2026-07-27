@@ -5,6 +5,7 @@ runVisualRegressionTest('patterns/Cards/LinkCardGrid/LinkCardGrid', {fileNamePre
 runVisualRegressionTest('patterns/Cards/LinkCardResponsive/LinkCardResponsive', {fileNamePrefix: 'LinkCardResponsive-'});
 runVisualRegressionTest('patterns/Cards/ProductCard/ProductCardGrid', {fileNamePrefix: 'ProductCardGrid-'});
 runVisualRegressionTest('patterns/Cards/ProductCard/ProductCardList', {fileNamePrefix: 'ProductCardList-'});
+runVisualRegressionTest('patterns/Carousel/CarouselTemplate', {fileNamePrefix: 'CarouselTemplate-'});
 runVisualRegressionTest('patterns/Forms/FormLibraries/FormLibrariesFormik', {fileNamePrefix: 'FormLibrariesFormik-'});
 runVisualRegressionTest('patterns/Forms/FormLibraries/FormLibrariesReactHookForm', {fileNamePrefix: 'FormLibrariesReactHookForm-'});
 runVisualRegressionTest('patterns/Forms/Layout/FormLayout', {fileNamePrefix: 'FormLayout-'});
