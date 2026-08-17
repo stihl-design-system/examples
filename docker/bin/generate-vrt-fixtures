@@ -3,27 +3,74 @@
 set -o errexit
 set -o pipefail
 
+
+# --- Visual formatting helpers ---
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[1;34m'
+MAGENTA='\033[1;35m'
+CYAN='\033[0;36m'
+BOLD='\033[1m'
+RESET='\033[0m'
+
+# Big text / Banner function
+banner() {
+  local color="$1"
+  local emoji="$2"
+  local msg="$3"
+  echo -e "${color}${BOLD}"
+  echo "========================================================================"
+  echo "  ${emoji}  ${msg}"
+  echo -ne "========================================================================"
+  echo -e "${RESET}"
+}
+
+# Error function
+error_msg() {
+  echo -e "${RED}${BOLD}❌ ERROR: $1${RESET}" >&2
+}
+
+# Success function
+success_msg() {
+  echo -e "${GREEN}${BOLD}✅ SUCCESS: $1${RESET}"
+}
+
+
 # Set NODE_ENV to 'test'
 export NODE_ENV=test
 
+SKIP_BUILD=false
+
+# Parse arguments
+for arg in "$@"; do
+  if [[ "${arg}" == "--skip-build" ]]; then
+    SKIP_BUILD=true
+  fi
+done
+
 echo "task: [$(date)] NODE_ENV is set to $NODE_ENV"
 
-echo "task: [$(date)] installing dependencies"
+banner "$MAGENTA" "📦" "Docker VRT Environment Setup"
 
 npm ci
 
-echo "task: [$(date)] finished installing dependencies"
+success_msg "Finished installing dependencies"
 
-echo "task: [$(date)] building examples"
 
-npm run build
+if [[ "${SKIP_BUILD}" == true ]]; then
+  if [[ ! -d "dist" ]]; then
+    error_msg "dist not found. Run without --skip-build first to create a full build."
+    exit 1
+  fi
+  banner "$YELLOW" "⏭️" "Skipping build ♻️"
+else
+  banner "$YELLOW" "🏗️" "Full Project Build"
+  npm run build
+fi
 
-echo "task: [$(date)] running visual regression tests"
-
-npx playwright install --with-deps --only-shell
+banner "$BLUE" "🧪" "VRT Execution"
 
 npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
     "npm run start" \
     "npm run test:vrt"
-
-echo "task: [$(date)] finished running visual regression tests"

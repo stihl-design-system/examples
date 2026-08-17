@@ -91,6 +91,78 @@ const PAGE_URL = 'http://localhost:3000';
 
 export const getPageUrl = (path: string) => `${PAGE_URL}/${path}`;
 
+// DSIcon renders an empty placeholder <div> and only imports the actual SVG
+// once an IntersectionObserver reports the icon in view.
+const LAZY_ICON_PLACEHOLDER = 'div[class*="ds-icon_image"]';
+const LAZY_ICON_POLL_INTERVAL = 100;
+const LAZY_ICON_MAX_POLLS = 25;
+
+/**
+ * @param page
+ *
+ * Waits until no further lazy icons resolve.
+ *
+ * Icons that never come into view – e.g. carousel items that are scrolled out
+ * horizontally – stay placeholders forever, so this waits for the number of
+ * placeholders to stop changing instead of waiting for it to reach zero.
+ */
+const waitForLazyIcons = async (page: Page) => {
+  let previousCount = -1;
+
+  for (let poll = 0; poll < LAZY_ICON_MAX_POLLS; poll++) {
+    const count = await page.locator(LAZY_ICON_PLACEHOLDER).count();
+
+    if (count === previousCount) {
+      return;
+    }
+
+    previousCount = count;
+    await page.waitForTimeout(LAZY_ICON_POLL_INTERVAL);
+  }
+};
+
+/**
+ * @param page
+ *
+ * Renders the whole document once, so that everything the first render
+ * triggers has already happened by the time Playwright starts comparing
+ * screenshots.
+ *
+ * Our screenshots are `fullPage`, but the viewport only covers a fraction of
+ * the page height. Two things therefore only settle while the capture is
+ * already running, which makes two consecutive screenshots differ and lets
+ * `toHaveScreenshot()` fail with "Failed to take two consecutive stable
+ * screenshots":
+ *
+ * - DSIcon imports its SVG lazily, so every icon below the fold is still an
+ *   empty placeholder – most visibly the carousel navigation chevrons.
+ * - Chromium resolves the font backing `monospace` (used by `<code>`) during
+ *   the full page capture, which changes the page height.
+ */
+export const settlePage = async (page: Page) => {
+  const viewport = page.viewportSize();
+
+  if (!viewport) {
+    return;
+  }
+
+  const { width, height } = viewport;
+
+  // Grow the viewport to the full page height, so every IntersectionObserver
+  // reports its icon in view, then let the icon imports resolve.
+  const pageHeight = await page.evaluate(
+    () => document.documentElement.scrollHeight
+  );
+  await page.setViewportSize({ width, height: Math.max(pageHeight, height) });
+  await waitForLazyIcons(page);
+  await page.setViewportSize({ width, height });
+
+  // A throwaway full page capture performs the render that resolves the font
+  // fallback, so that the first compared screenshot no longer does.
+  await page.screenshot({ fullPage: true, animations: 'disabled' });
+  await waitForLazyIcons(page);
+};
+
 export const waitForTransitionFinish = (page: Page) =>
   page.waitForTimeout(TRANSITION_DURATION);
 
@@ -161,6 +233,8 @@ export const executeMediaQueryTests = async (
           (await page.evaluate(() => document.body.clientHeight)),
       });
 
+      await settlePage(page);
+
       if (scenario) {
         await scenario(page);
       }
@@ -210,6 +284,8 @@ export const gotoPageAndPrepare = async (
     height:
       customHeight || (await page.evaluate(() => document.body.clientHeight)),
   });
+
+  await settlePage(page);
 };
 
 /**
