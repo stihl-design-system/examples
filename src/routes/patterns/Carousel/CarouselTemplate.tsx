@@ -1,6 +1,7 @@
 import {
   DSAriaLiveRegions,
   DSCarousel,
+  DSHeading,
   DSLinkCard,
   DSText,
   DSTitle,
@@ -87,6 +88,32 @@ const renderCards = (): JSX.Element[] =>
     />
   ));
 
+// Full-bleed images used as carousel items
+const images: { src: string; alt: string }[] = [
+  {
+    src: '/card-example-image-5.webp',
+    alt: 'Close-up of a chainsaw guide bar and chain resting on a freshly cut tree stump in a forest.',
+  },
+  {
+    src: '/card-example-image-4.webp',
+    alt: 'A set of STIHL garden tools arranged neatly in front of a green hedge.',
+  },
+  {
+    src: '/card-example-image-8.webp',
+    alt: 'A professional arborist secured with ropes and safety gear operates a chainsaw while positioned high in a tree within a dense forest.',
+  },
+];
+
+const renderImages = (keyPrefix: string): JSX.Element[] =>
+  images.map((image) => (
+    <img
+      key={`${keyPrefix}-${image.src}`}
+      className={styles.image}
+      src={image.src}
+      alt={image.alt}
+    />
+  ));
+
 const CarouselTemplatePattern = (): JSX.Element => {
   return (
     <div className={styles.page}>
@@ -95,17 +122,100 @@ const CarouselTemplatePattern = (): JSX.Element => {
         Grid Layout
       </DSTitle>
 
+      <DSHeading tag='h2' size='large' className={styles.subheading}>
+        Single-Item - Navigation Controls Outside, Scrollmarker Outside
+      </DSHeading>
       <ul className={styles.list}>
-        <DSText tag='li'>Carousel multi</DSText>
-        <DSText tag='li'>Card with max-width</DSText>
+        <DSText tag='li'>
+          Optimized for presenting one primary piece of content with persistent
+          navigation.
+        </DSText>
+        <DSText tag='li'>
+          Carousel <code>variant=&quot;single&quot;</code>,{' '}
+          <code>layout=&quot;grid&quot;</code>
+        </DSText>
+        <DSText tag='li'>Full-bleed images as items.</DSText>
+        <DSText tag='li'>
+          Navigation visible on Breakpoint &gt;= L, hidden below via
+          <code>navigationControls.show</code> default value.
+        </DSText>
+      </ul>
+
+      <DSCarousel
+        aria={{ 'aria-label': 'Outside controls carousel' }}
+        variant='single'
+        layout='grid'
+        navigationControls={{
+          position: { base: 'inside', l: 'outside' },
+          variant: 'filled',
+        }}
+        scrollMarkerPosition='outside'
+        scrollMarkerVariant='ghost'
+      >
+        {renderImages('outside-controls')}
+      </DSCarousel>
+
+      <DSHeading tag='h2' size='large' className={styles.subheading}>
+        Single-Item – Navigation Controls Inside, Scrollmarker Inside
+      </DSHeading>
+      <ul className={styles.list}>
+        <DSText tag='li'>
+          Optimized for presenting one primary piece of content with persistent
+          navigation.
+        </DSText>
+        <DSText tag='li'>
+          Carousel <code>variant=&quot;single&quot;</code>,{' '}
+          <code>layout=&quot;grid&quot;</code>
+        </DSText>
+        <DSText tag='li'>
+          <code>navigationControls.position=&quot;inside&quot;</code>,{' '}
+          <code>navigationControls.variant=&quot;inverse&quot;</code>
+        </DSText>
+        <DSText tag='li'>
+          <code>scrollMarkerPosition=&quot;inside&quot;</code>,{' '}
+          <code>scrollMarkerVariant=&quot;inverse&quot;</code>
+        </DSText>
+        <DSText tag='li'>
+          Navigation visible on Breakpoint &gt;= L, hidden below via
+          <code>navigationControls.show</code> default value.
+        </DSText>
+      </ul>
+
+      <DSCarousel
+        aria={{ 'aria-label': 'Inside controls carousel' }}
+        variant='single'
+        layout='grid'
+        navigationControls={{ position: 'inside', variant: 'inverse' }}
+        scrollMarkerPosition='inside'
+        scrollMarkerVariant='inverse'
+      >
+        {renderImages('inside-controls')}
+      </DSCarousel>
+
+      <DSHeading tag='h2' size='large' className={styles.subheading}>
+        Multi-Item - Navigation Controls Outside, Scrollmarker Outside
+      </DSHeading>
+
+      <ul className={styles.list}>
+        <DSText tag='li'>
+          Optimized for presenting multiple related Items that users can browse,
+          compare, and discover.
+        </DSText>
+        <DSText tag='li'>
+          Carousel <code>variant=&quot;multi&quot;</code>,
+          <code>layout=&quot;grid&quot;</code>
+        </DSText>
+        <DSText tag='li'>
+          Card with <code>max-width</code>
+        </DSText>
         <DSText tag='li'>
           Navigation outside, visible on Breakpoint &gt;= L, hidden below via
-          navigationControls.show default value
+          <code>navigationControls.show</code> default value.
         </DSText>
-        <DSText tag='li'>Peek on Breakpoint &lt; L</DSText>
+        <DSText tag='li'>Peek on Breakpoint &lt; L.</DSText>
         <DSText tag='li'>
-          Grid, switches from &apos;main&apos; to &apos;extended&apos; internal
-          grid area on Breakpoint L
+          Grid, switches from <code>&quot;main&quot;</code> to{' '}
+          <code>&quot;extended&quot;</code> internal grid area on Breakpoint L.
         </DSText>
       </ul>
 
@@ -119,15 +229,30 @@ const CarouselTemplatePattern = (): JSX.Element => {
         {renderCards()}
       </DSCarousel>
 
+      <DSHeading tag='h2' size='large' className={styles.subheading}>
+        Single-Item Embedded – Navigation Controls Hidden, Scrollmarker Inside
+      </DSHeading>
+
       <ul className={styles.list}>
-        <DSText tag='li'>Four carousels in a row</DSText>
-        <DSText tag='li'>Carousel single, layout flex</DSText>
         <DSText tag='li'>
-          Navigation hidden via navigationControls.show=false
+          Optimized for presenting a single piece of media within another
+          component or layout while minimizing visual distraction.
         </DSText>
-        <DSText tag='li'>scrollMarkerPosition inside, variant inverse</DSText>
+        <DSText tag='li'>Four carousels in a row.</DSText>
         <DSText tag='li'>
-          &lt;= M: halves (2 per row), &gt;= L: quarters (4 per row)
+          Carousel <code>variant=&quot;single&quot;</code>,{' '}
+          <code>layout=&quot;flex&quot;</code>
+        </DSText>
+        <DSText tag='li'>
+          Navigation hidden via <code>navigationControls.show=false</code>
+        </DSText>
+        <DSText tag='li'>
+          <code>scrollMarkerPosition=&quot;inside&quot;</code>,{' '}
+          <code>scrollMarkerVariant=&quot;inverse&quot;</code>
+        </DSText>
+        <DSText tag='li'>
+          &lt; M: full width (1 per row), M: halves (2 per row), &gt;= L:
+          quarters (4 per row).
         </DSText>
       </ul>
       <div className={styles.firstQuarterItem}>
@@ -180,14 +305,20 @@ const CarouselTemplatePattern = (): JSX.Element => {
       </div>
 
       <ul className={styles.list}>
-        <DSText tag='li'>Two carousels in a row</DSText>
-        <DSText tag='li'>Carousel single, layout flex</DSText>
+        <DSText tag='li'>Two carousels in a row.</DSText>
         <DSText tag='li'>
-          Navigation hidden via navigationControls.show=false
+          Carousel <code>variant=&quot;single&quot;</code>,{' '}
+          <code>layout=&quot;flex&quot;</code>
         </DSText>
-        <DSText tag='li'>scrollMarkerPosition inside, variant inverse</DSText>
         <DSText tag='li'>
-          &lt;= M: quarters (2 per row), &gt;= L: halves (2 per row)
+          Navigation hidden via <code>navigationControls.show=false</code>
+        </DSText>
+        <DSText tag='li'>
+          <code>scrollMarkerPosition=&quot;inside&quot;</code>,{' '}
+          <code>scrollMarkerVariant=&quot;inverse&quot;</code>
+        </DSText>
+        <DSText tag='li'>
+          &lt;= M: quarters (2 per row), &gt;= L: halves (2 per row).
         </DSText>
       </ul>
       <div className={styles.firstHalfItem}>

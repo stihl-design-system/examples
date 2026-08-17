@@ -3,6 +3,7 @@ import { runVisualRegressionTest } from './helpers/helper';
 runVisualRegressionTest('patterns/Cards/ActionCardResponsive/ActionCardResponsive', {fileNamePrefix: 'ActionCardResponsive-'});
 runVisualRegressionTest('patterns/Cards/LinkCardGrid/LinkCardGrid', {fileNamePrefix: 'LinkCardGrid-'});
 runVisualRegressionTest('patterns/Cards/LinkCardResponsive/LinkCardResponsive', {fileNamePrefix: 'LinkCardResponsive-'});
+runVisualRegressionTest('patterns/Cards/ProductCard/ProductCardCarousel', {fileNamePrefix: 'ProductCardCarousel-'});
 runVisualRegressionTest('patterns/Cards/ProductCard/ProductCardGrid', {fileNamePrefix: 'ProductCardGrid-'});
 runVisualRegressionTest('patterns/Cards/ProductCard/ProductCardList', {fileNamePrefix: 'ProductCardList-'});
 runVisualRegressionTest('patterns/Carousel/CarouselTemplate', {fileNamePrefix: 'CarouselTemplate-'});

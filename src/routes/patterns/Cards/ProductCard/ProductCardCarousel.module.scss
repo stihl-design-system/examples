@@ -1,14 +1,15 @@
 @use '@stihl-design-system/components/styles/scss/ds';
 
-// Initialize the STIHL Design System grid
+// Initialize the STIHL Design System grid so the carousel (layout='grid') can
+// align its items with the design system grid.
 .page {
-  padding-block: ds.$spacing-48;
   @include ds.grid;
-}
 
-// Use the main grid column for the content
-.row {
-  @include ds.grid-main-column;
+  & {
+    // Vertical rhythm between the heading and the carousel
+    row-gap: ds.$spacing-32;
+    padding-block: ds.$spacing-48;
+  }
 }
 
 // Use the main grid column for the page heading
@@ -16,20 +17,9 @@
   @include ds.grid-main-column;
 }
 
-.card-list {
-  display: grid;
-  // Create a responsive grid with a minimum card width of 280px.
-  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
-  gap: ds.$spacing-24;
-
-  // Remove default list styles
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
 .card-item {
-  // Make sure each card takes the full height of the grid item
+  // Make sure each card fills the full height of its carousel item so all
+  // cards in a row align to the same height.
   height: 100%;
 }
 
@@ -39,17 +29,14 @@
 // =========================================
 
 // MEDIA SLOT
+// Unlike the grid example the media slot holds a single static image, so no
+// carousel-specific overrides are required here.
 .media-wrapper {
   position: relative;
   padding-block-start: ds.$spacing-16;
   padding-block-end: ds.$spacing-0;
   padding-inline: ds.$spacing-16;
   aspect-ratio: 4 / 3;
-
-  // The card is roughly as wide as a mobile carousel, but the inside scroll
-  // marker inset reacts to viewport media queries (not the card width).
-  // Pin it to 0.5rem so the markers sit 8px above the bottom of the viewport on font-size: 16px.
-  --ds-carousel-scroll-marker-inside-inset-block-end: #{ds.$spacing-8-rem};
 
   img {
     aspect-ratio: 4 / 3;
@@ -89,7 +76,7 @@
 .card-heading {
   margin-block-end: ds.$spacing-8;
 
-  // Limit description text to 3 lines with ellipsis
+  // Limit heading text to 3 lines with ellipsis
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -119,7 +106,7 @@
   @include ds.text-small;
 }
 
-// Footer slot
+// FOOTER SLOT
 .footer {
   display: flex;
   align-items: flex-end;

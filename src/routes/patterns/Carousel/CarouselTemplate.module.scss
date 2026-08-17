@@ -16,6 +16,16 @@
   height: 100%;
 }
 
+// Full-bleed image carousel item. The fixed aspect ratio keeps every slide the
+// same height, so a `single` carousel does not jump when the source images have
+// slightly different intrinsic ratios.
+.image {
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
 // Placeholder item for the carousel template
 .item {
   display: flex;
@@ -29,8 +39,13 @@
 }
 
 // Headings sit in the main grid area
-.heading {
+.heading,
+.subheading {
   @include ds.grid-main-column;
+}
+
+.subheading {
+  margin-block-start: ds.$spacing-32;
 }
 
 .list {
@@ -39,17 +54,27 @@
   padding-inline-start: ds.$spacing-24;
 }
 
-// Quarter grid items: halves at < M, quarters at >= L
+// Quarter grid items: full width at < M (1 per row), halves at M (2 per row),
+// quarters at >= L (4 per row)
 .first-quarter-item {
-  @include ds.grid-first-quarter;
+  @include ds.grid-main-column;
+  @include ds.media-query-min('m') {
+    @include ds.grid-first-quarter;
+  }
 }
 
 .quarter-item {
-  @include ds.grid-span-one-quarter;
+  @include ds.grid-main-column;
+  @include ds.media-query-min('m') {
+    @include ds.grid-span-one-quarter;
+  }
 }
 
 .third-quarter-item {
-  @include ds.grid-span-one-quarter(true);
+  @include ds.grid-main-column;
+  @include ds.media-query-min('m') {
+    @include ds.grid-span-one-quarter(true);
+  }
 }
 
 .first-half-item {
