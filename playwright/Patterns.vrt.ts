@@ -6,6 +6,8 @@ runVisualRegressionTest('patterns/Cards/LinkCardResponsive/LinkCardResponsive', 
 runVisualRegressionTest('patterns/Cards/ProductCard/ProductCardCarousel', {fileNamePrefix: 'ProductCardCarousel-'});
 runVisualRegressionTest('patterns/Cards/ProductCard/ProductCardGrid', {fileNamePrefix: 'ProductCardGrid-'});
 runVisualRegressionTest('patterns/Cards/ProductCard/ProductCardList', {fileNamePrefix: 'ProductCardList-'});
+runVisualRegressionTest('patterns/Cards/SelectableCard/SelectableCard', {fileNamePrefix: 'SelectableCard-'});
+runVisualRegressionTest('patterns/Cards/SelectableCardGroup/SelectableCardGroup', {fileNamePrefix: 'SelectableCardGroup-'});
 runVisualRegressionTest('patterns/Carousel/CarouselTemplate', {fileNamePrefix: 'CarouselTemplate-'});
 runVisualRegressionTest('patterns/Forms/FormLibraries/FormLibrariesFormik', {fileNamePrefix: 'FormLibrariesFormik-'});
 runVisualRegressionTest('patterns/Forms/FormLibraries/FormLibrariesReactHookForm', {fileNamePrefix: 'FormLibrariesReactHookForm-'});

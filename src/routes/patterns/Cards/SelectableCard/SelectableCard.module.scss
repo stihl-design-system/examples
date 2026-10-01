@@ -1,0 +1,33 @@
+@use '@stihl-design-system/components/styles/scss/ds';
+
+.page {
+  padding-block: ds.$spacing-48;
+  padding-inline: ds.$spacing-24;
+}
+
+// Standalone checkbox cards are not wrapped in a group, so the layout is up to
+// the consumer. A wrapping flex row keeps the cards side by side and lets them
+// wrap on narrow viewports.
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: ds.$spacing-16;
+
+  // Remove default list styles
+  list-style-type: none;
+  margin-block: ds.$spacing-0;
+  margin-inline: ds.$spacing-0;
+  padding-block: ds.$spacing-0;
+  padding-inline: ds.$spacing-0;
+}
+
+.card {
+  // Cards stretch to the tallest one in the row, so their controls stay aligned
+  height: 100%;
+  max-width: 20rem;
+}
+
+.card-heading {
+  margin-block-start: ds.$spacing-0;
+  margin-block-end: ds.$spacing-8;
+}

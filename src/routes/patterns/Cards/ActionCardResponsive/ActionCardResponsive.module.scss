@@ -1,7 +1,10 @@
 @use '@stihl-design-system/components/styles/scss/ds';
 
 .page {
-  // Simple page styling for the example.
+  // Simple page styling for the example. Stack the example cards with spacing.
+  display: flex;
+  flex-direction: column;
+  gap: ds.$spacing-dynamic-s;
   padding: ds.$spacing-dynamic-s;
 }
 
@@ -27,8 +30,16 @@
 // Padding inside the cards content.
 // This matches the setting of the 'padding' prop 'small'.
 // No need to set that prop to 'small' when using this responsive container query method.
+// Held on the card root rather than the content wrapper: the selection control
+// is a sibling of the content, so a shared parent is the only place both can
+// read it from. That lets the selectable variant align the control with the
+// content and add its clearance on top of the current breakpoint's padding.
+.card-responsive {
+  --card-content-padding: #{ds.$spacing-16};
+}
+
 .card-content-wrapper {
-  padding: ds.$spacing-16;
+  padding: var(--card-content-padding);
 }
 
 .card-heading {
@@ -80,8 +91,8 @@
 // This matches the setting of the 'padding' prop 'medium'.
 // No need to set that prop to 'medium' when using this responsive container query method.
 @container card-orientation (width > 420px) {
-  .card-content-wrapper {
-    padding: ds.$spacing-24;
+  .card-responsive {
+    --card-content-padding: #{ds.$spacing-24};
   }
 
   .card-supplementary-slot {
@@ -109,6 +120,8 @@
 
     // Increase max-width from vertical layout to allow wider cards in horizontal layout.
     max-width: 1435px;
+
+    --card-content-padding: #{ds.$spacing-32};
   }
 
   // In horizontal layout, change the image aspect ratio to 3:4 as defined by Design.
@@ -128,7 +141,6 @@
 
   .card-content-wrapper {
     grid-area: content;
-    padding: ds.$spacing-32;
   }
 
   .card-supplementary-slot {
@@ -136,6 +148,34 @@
 
     padding-block: ds.$spacing-8;
     padding-inline: ds.$spacing-16;
+  }
+
+  // Selectable variant: once the card is horizontal the checkbox sits in the
+  // content's top-right corner, so the content reserves extra trailing padding
+  // to keep the heading clear of it. The clearance (12px gap + 20px control) is
+  // added on top of the current content padding, so it adapts to small/medium.
+  .card-responsive:has(input[type='checkbox']) .card-content-wrapper {
+    padding-inline-end: calc(
+      var(--card-content-padding) + #{ds.$spacing-12} + #{ds.$spacing-20}
+    );
+  }
+
+  // The component's own horizontal selection-control styles key off the
+  // orientation='horizontal' class, which this container-query card never gets,
+  // so the equivalent is applied here: drop the white chip (it only reads as a
+  // control over media, and here it sits over the white content) and inset the
+  // control by the content padding so its corner lines up with the content's.
+  // Together with the clearance above this leaves the intended 12px gap.
+  .card-responsive:has(input[type='checkbox']) .card-selection-control {
+    background-color: transparent;
+    padding-block-start: var(--card-content-padding);
+    padding-inline-end: var(--card-content-padding);
+  }
+
+  // The selectable card has no supplementary area, so its media reaches the
+  // bottom of the card and keeps its bottom-left radius.
+  .card-responsive:has(input[type='checkbox']) .card-image {
+    border-bottom-left-radius: ds.$spacing-4;
   }
 }
 

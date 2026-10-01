@@ -1,0 +1,54 @@
+@use '@stihl-design-system/components/styles/scss/ds';
+
+.page {
+  padding-block: ds.$spacing-48;
+  padding-inline: ds.$spacing-24;
+  max-width: 75rem;
+}
+
+// The group lays its cards out in equal auto-fit tracks, so the cards only need
+// to say how narrow a track may get before the group reflows into fewer columns.
+// 240px is the smallest card width from the design; 448px is its largest.
+.card-group {
+  --ds-action-card-group-min-card-width: 15rem;
+}
+
+.card {
+  max-width: 28rem;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  gap: ds.$spacing-8;
+}
+
+// 32px graphic area above the heading. DSIcon caps out at 24px
+// (size='x-large'), so the 32px the design asks for is forced here.
+.card-graphic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: ds.$spacing-32-rem;
+  block-size: ds.$spacing-32-rem;
+
+  > * {
+    inline-size: ds.$spacing-32-rem;
+    block-size: ds.$spacing-32-rem;
+    min-inline-size: ds.$spacing-32-rem;
+    min-block-size: ds.$spacing-32-rem;
+  }
+}
+
+.card-heading {
+  margin-block: ds.$spacing-0;
+}
+
+.card-description {
+  @include ds.text-small();
+  margin-block: ds.$spacing-0;
+}
+
+.card-description-highlight {
+  @include ds.text-small-bold();
+}
