@@ -32,7 +32,7 @@ interface FormValues {
   lastName?: string;
   country?: ComboboxOption;
   notes?: string;
-  height?: string;
+  height?: number;
   profilePicture?: File[];
   terms?: boolean;
 }
@@ -73,7 +73,7 @@ const FormLibrariesFormik = (): JSX.Element => {
     firstName: '',
     lastName: '',
     notes: '',
-    height: '',
+    height: 0,
     terms: false,
     title: '',
   };
