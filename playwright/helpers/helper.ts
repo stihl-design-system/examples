@@ -96,24 +96,134 @@ export const getPageUrl = (path: string) => `${PAGE_URL}/${path}`;
 const LAZY_ICON_PLACEHOLDER = 'div[class*="ds-icon_image"]';
 const LAZY_ICON_POLL_INTERVAL = 100;
 const LAZY_ICON_MAX_POLLS = 25;
+// Number of consecutive identical polls required before the placeholder count
+// is treated as settled. A single repeat is not enough: imports can be in
+// flight without any resolving inside one poll interval, which made WebKit
+// return while icons were still loading.
+const LAZY_ICON_STABLE_POLLS = 3;
 
 /**
  * @param page
  *
- * Waits until no further lazy icons resolve.
+ * Makes DSIcon load its SVG eagerly and deterministically instead of relying on
+ * the browser's `IntersectionObserver`.
  *
- * Icons that never come into view – e.g. carousel items that are scrolled out
- * horizontally – stay placeholders forever, so this waits for the number of
- * placeholders to stop changing instead of waiting for it to reach zero.
+ * DSIcon only imports its SVG once an `IntersectionObserver` reports the
+ * placeholder in view. WebKit fires those observers unreliably after a
+ * programmatic viewport resize, so some under-the-fold icons randomly stayed
+ * placeholders – even across baseline runs.
+ *
+ * This installs a wrapper that reports every icon placeholder as intersecting
+ * on the next tick, regardless of its scroll position, while delegating every
+ * other observed element (carousel markers, floating-ui, …) to the native
+ * observer so their behaviour is untouched.
+ *
+ * Must be called before `page.goto()` so the script is in place for the first
+ * render.
+ */
+export const forceEagerIconLoading = (page: Page) =>
+  page.addInitScript(() => {
+    const NativeIntersectionObserver = window.IntersectionObserver;
+
+    type ObserverCallback = ConstructorParameters<
+      typeof IntersectionObserver
+    >[0];
+    type ObserverOptions = ConstructorParameters<
+      typeof IntersectionObserver
+    >[1];
+
+    const isIconPlaceholder = (target: Element) =>
+      target instanceof Element &&
+      target.matches('[class*="ds-icon_image"]');
+
+    class EagerIconIntersectionObserver {
+      private readonly callback: ObserverCallback;
+      private readonly native: IntersectionObserver;
+
+      constructor(callback: ObserverCallback, options?: ObserverOptions) {
+        this.callback = callback;
+        this.native = new NativeIntersectionObserver(callback, options);
+      }
+
+      observe(target: Element) {
+        if (!isIconPlaceholder(target)) {
+          this.native.observe(target);
+          return;
+        }
+
+        // Mimic the async nature of a real observer to avoid re-entrant React
+        // state updates, but fire unconditionally so the import always starts.
+        setTimeout(() => {
+          const rect = target.getBoundingClientRect();
+          this.callback(
+            [
+              {
+                target,
+                isIntersecting: true,
+                intersectionRatio: 1,
+                boundingClientRect: rect,
+                intersectionRect: rect,
+                rootBounds: rect,
+                time: 0,
+              } as IntersectionObserverEntry,
+            ],
+            this as unknown as IntersectionObserver
+          );
+        }, 0);
+      }
+
+      unobserve(target: Element) {
+        this.native.unobserve(target);
+      }
+
+      disconnect() {
+        this.native.disconnect();
+      }
+
+      takeRecords() {
+        return this.native.takeRecords();
+      }
+
+      get root() {
+        return this.native.root;
+      }
+
+      get rootMargin() {
+        return this.native.rootMargin;
+      }
+
+      get thresholds() {
+        return this.native.thresholds;
+      }
+    }
+
+    window.IntersectionObserver =
+      EagerIconIntersectionObserver as unknown as typeof IntersectionObserver;
+  });
+
+/**
+ * @param page
+ *
+ * Waits until the number of lazy icon placeholders is settled.
+ *
+ * With {@link forceEagerIconLoading} every icon resolves, so this normally
+ * reaches zero. Requiring several consecutive identical polls prevents an early
+ * return on a transient plateau while imports are still in flight.
  */
 const waitForLazyIcons = async (page: Page) => {
   let previousCount = -1;
+  let stablePolls = 0;
 
   for (let poll = 0; poll < LAZY_ICON_MAX_POLLS; poll++) {
     const count = await page.locator(LAZY_ICON_PLACEHOLDER).count();
 
     if (count === previousCount) {
-      return;
+      stablePolls += 1;
+      if (count === 0 || stablePolls >= LAZY_ICON_STABLE_POLLS) {
+        return;
+      }
+    } else {
+      stablePolls = 0;
     }
 
     previousCount = count;
@@ -134,8 +244,9 @@ const waitForLazyIcons = async (page: Page) => {
  * `toHaveScreenshot()` fail with "Failed to take two consecutive stable
  * screenshots":
  *
- * - DSIcon imports its SVG lazily, so every icon below the fold is still an
- *   empty placeholder – most visibly the carousel navigation chevrons.
+ * - DSIcon imports its SVG lazily. {@link forceEagerIconLoading} makes every
+ *   icon start loading on first render regardless of scroll position; this
+ *   waits for those imports to resolve.
  * - Chromium resolves the font backing `monospace` (used by `<code>`) during
  *   the full page capture, which changes the page height.
  */
@@ -146,16 +257,9 @@ export const settlePage = async (page: Page) => {
     return;
   }
 
-  const { width, height } = viewport;
-
-  // Grow the viewport to the full page height, so every IntersectionObserver
-  // reports its icon in view, then let the icon imports resolve.
-  const pageHeight = await page.evaluate(
-    () => document.documentElement.scrollHeight
-  );
-  await page.setViewportSize({ width, height: Math.max(pageHeight, height) });
+  // Icons load eagerly via forceEagerIconLoading, so just wait for the imports
+  // triggered by the first render to resolve.
   await waitForLazyIcons(page);
-  await page.setViewportSize({ width, height });
 
   // A throwaway full page capture performs the render that resolves the font
   // fallback, so that the first compared screenshot no longer does.
@@ -222,6 +326,8 @@ export const executeMediaQueryTests = async (
     test(`${
       testTitle ? testTitle + ' ' : ''
     }viewport width ${breakpoint}px`, async ({ page }, { title }) => {
+      await forceEagerIconLoading(page);
+
       // Needs to be set for proper screen height
       await page.setViewportSize({ width: breakpoint, height: 1 });
 
@@ -262,6 +368,8 @@ export const gotoPageAndPrepare = async (
   viewportHeight = 1000,
   zoomed = false
 ) => {
+  await forceEagerIconLoading(page);
+
   // Needs to be set for proper screen height
   await page.setViewportSize({ width: viewportWidth, height: 1 });
 
