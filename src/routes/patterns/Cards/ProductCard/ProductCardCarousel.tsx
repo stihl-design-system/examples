@@ -261,12 +261,11 @@ const renderProductCard = (product: ProductCardData): JSX.Element => {
         <div>
           <DSButtonRound
             size='medium'
-            aria={{ 'aria-label': 'Add to cart' }}
             iconName='cart-plus'
             variant='highlight'
             onClick={() => console.log('Add to cart')}
           >
-            Shop
+            Add to cart
           </DSButtonRound>
         </div>
       </DSActionCard.Footer>
@@ -296,6 +295,7 @@ const renderProductCard = (product: ProductCardData): JSX.Element => {
             size='small'
             variant='ghost'
             iconName='heart'
+            onClick={() => console.log('Add to favorites')}
           >
             Add to favorites
           </DSButton>

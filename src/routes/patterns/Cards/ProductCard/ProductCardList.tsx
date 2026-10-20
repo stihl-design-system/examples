@@ -110,6 +110,7 @@ const ProductCardListPattern = (): JSX.Element => {
                     variant='outline'
                     iconName='heart'
                     className={styles.favoriteButton}
+                    onClick={() => console.log('Add to favorites')}
                   >
                     Add to favorites
                   </DSButton>
@@ -203,6 +204,7 @@ const ProductCardListPattern = (): JSX.Element => {
                     variant='outline'
                     iconName='heart'
                     className={styles.favoriteButton}
+                    onClick={() => console.log('Add to favorites')}
                   >
                     Add to favorites
                   </DSButton>
@@ -303,6 +305,7 @@ const ProductCardListPattern = (): JSX.Element => {
                     variant='outline'
                     iconName='heart'
                     className={styles.favoriteButton}
+                    onClick={() => console.log('Add to favorites')}
                   >
                     Add to favorites
                   </DSButton>
@@ -399,6 +402,7 @@ const ProductCardListPattern = (): JSX.Element => {
                     variant='outline'
                     iconName='heart'
                     className={styles.favoriteButton}
+                    onClick={() => console.log('Add to favorites')}
                   >
                     Add to favorites
                   </DSButton>
@@ -499,6 +503,7 @@ const ProductCardListPattern = (): JSX.Element => {
                     variant='outline'
                     iconName='heart'
                     className={styles.favoriteButton}
+                    onClick={() => console.log('Add to favorites')}
                   >
                     Add to favorites
                   </DSButton>
@@ -587,6 +592,7 @@ const ProductCardListPattern = (): JSX.Element => {
                     variant='outline'
                     iconName='heart'
                     className={styles.favoriteButton}
+                    onClick={() => console.log('Add to favorites')}
                   >
                     Add to favorites
                   </DSButton>
@@ -675,6 +681,7 @@ const ProductCardListPattern = (): JSX.Element => {
                     variant='outline'
                     iconName='heart'
                     className={styles.favoriteButton}
+                    onClick={() => console.log('Add to favorites')}
                   >
                     Add to favorites
                   </DSButton>

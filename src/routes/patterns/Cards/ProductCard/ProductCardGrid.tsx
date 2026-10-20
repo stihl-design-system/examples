@@ -96,12 +96,11 @@ const ProductCardGridPattern = (): JSX.Element => {
                 <div>
                   <DSButtonRound
                     size='medium'
-                    aria={{ 'aria-label': 'Add to cart' }}
                     iconName='cart-plus'
                     variant='highlight'
                     onClick={() => console.log('Add to cart')}
                   >
-                    Shop
+                    Add to cart
                   </DSButtonRound>
                 </div>
               </DSActionCard.Footer>
@@ -125,7 +124,7 @@ const ProductCardGridPattern = (): JSX.Element => {
                     alt='MS 261 C-M product image 3'
                   />
                 </DSCarousel>
-                {/* 
+                {/*
                   Since a product can have multiple battery options, we use a list to provide information about each battery type.
                   Make sure to use an appropriate aria-label for the list to describe its content for screen readers.
                 */}
@@ -143,6 +142,7 @@ const ProductCardGridPattern = (): JSX.Element => {
                     size='small'
                     variant='ghost'
                     iconName='heart'
+                    onClick={() => console.log('Add to favorites')}
                   >
                     Add to favorites
                   </DSButton>
@@ -195,12 +195,11 @@ const ProductCardGridPattern = (): JSX.Element => {
                 <div>
                   <DSButtonRound
                     size='medium'
-                    aria={{ 'aria-label': 'Add to cart' }}
                     iconName='cart-plus'
                     variant='highlight'
                     onClick={() => console.log('Add to cart')}
                   >
-                    Shop
+                    Add to cart
                   </DSButtonRound>
                 </div>
               </DSActionCard.Footer>
@@ -239,6 +238,7 @@ const ProductCardGridPattern = (): JSX.Element => {
                     size='small'
                     variant='ghost'
                     iconName='heart'
+                    onClick={() => console.log('Add to favorites')}
                   >
                     Add to favorites
                   </DSButton>
@@ -301,12 +301,11 @@ const ProductCardGridPattern = (): JSX.Element => {
                 <div>
                   <DSButtonRound
                     size='medium'
-                    aria={{ 'aria-label': 'Add to cart' }}
                     iconName='cart-plus'
                     variant='highlight'
                     onClick={() => console.log('Add to cart')}
                   >
-                    Shop
+                    Add to cart
                   </DSButtonRound>
                 </div>
               </DSActionCard.Footer>
@@ -342,6 +341,7 @@ const ProductCardGridPattern = (): JSX.Element => {
                     size='small'
                     variant='ghost'
                     iconName='heart'
+                    onClick={() => console.log('Add to favorites')}
                   >
                     Add to favorites
                   </DSButton>
@@ -401,12 +401,11 @@ const ProductCardGridPattern = (): JSX.Element => {
                 <div>
                   <DSButtonRound
                     size='medium'
-                    aria={{ 'aria-label': 'Add to cart' }}
                     iconName='cart-plus'
                     variant='highlight'
                     onClick={() => console.log('Add to cart')}
                   >
-                    Shop
+                    Add to cart
                   </DSButtonRound>
                 </div>
               </DSActionCard.Footer>
@@ -432,6 +431,7 @@ const ProductCardGridPattern = (): JSX.Element => {
                     size='small'
                     variant='ghost'
                     iconName='heart'
+                    onClick={() => console.log('Add to favorites')}
                   >
                     Add to favorites
                   </DSButton>
@@ -492,12 +492,11 @@ const ProductCardGridPattern = (): JSX.Element => {
                 <div>
                   <DSButtonRound
                     size='medium'
-                    aria={{ 'aria-label': 'Add to cart' }}
                     iconName='cart-plus'
                     variant='highlight'
                     onClick={() => console.log('Add to cart')}
                   >
-                    Shop
+                    Add to cart
                   </DSButtonRound>
                 </div>
               </DSActionCard.Footer>
@@ -513,6 +512,7 @@ const ProductCardGridPattern = (): JSX.Element => {
                     size='small'
                     variant='ghost'
                     iconName='heart'
+                    onClick={() => console.log('Add to favorites')}
                   >
                     Add to favorites
                   </DSButton>
@@ -572,12 +572,11 @@ const ProductCardGridPattern = (): JSX.Element => {
                 <div>
                   <DSButtonRound
                     size='medium'
-                    aria={{ 'aria-label': 'Add to cart' }}
                     iconName='cart-plus'
                     variant='highlight'
                     onClick={() => console.log('Add to cart')}
                   >
-                    Shop
+                    Add to cart
                   </DSButtonRound>
                 </div>
               </DSActionCard.Footer>
@@ -592,6 +591,7 @@ const ProductCardGridPattern = (): JSX.Element => {
                     size='small'
                     variant='ghost'
                     iconName='heart'
+                    onClick={() => console.log('Add to favorites')}
                   >
                     Add to favorites
                   </DSButton>
@@ -651,12 +651,11 @@ const ProductCardGridPattern = (): JSX.Element => {
                 <div>
                   <DSButtonRound
                     size='medium'
-                    aria={{ 'aria-label': 'Add to cart' }}
                     iconName='cart-plus'
                     variant='highlight'
                     onClick={() => console.log('Add to cart')}
                   >
-                    Shop
+                    Add to cart
                   </DSButtonRound>
                 </div>
               </DSActionCard.Footer>
@@ -682,6 +681,7 @@ const ProductCardGridPattern = (): JSX.Element => {
                     size='small'
                     variant='ghost'
                     iconName='heart'
+                    onClick={() => console.log('Add to favorites')}
                   >
                     Add to favorites
                   </DSButton>
